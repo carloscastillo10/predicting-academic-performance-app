@@ -10,7 +10,7 @@ const navigation = [
   { name: 'Product', href: '/' },
   { name: 'Features', href: '/' },
   { name: 'Marketplace', href: '/' },
-  { name: 'Company', href: '#' },
+  { name: 'Company', href: '/' },
 ]
 
 export function Header(): React.JSX.Element {
@@ -26,7 +26,7 @@ export function Header(): React.JSX.Element {
             <div className="flex items-center justify-between">
               <Link href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <Image className="h-8 w-auto" src="tailwind-logo.svg" width={50} height={50} alt="TailWind Logo" />
+                <Image className="h-8 w-auto" src="logo.svg" width={50} height={50} alt="TailWind Logo" />
               </Link>
               <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={() => setMobileMenuOpen(false)}>
                 <span className="sr-only">Close menu</span>
