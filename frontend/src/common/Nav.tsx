@@ -18,7 +18,7 @@ export function Nav({ navigation, setMobileMenuOpen }: Props): React.JSX.Element
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <Image className="h-8 w-auto" src="tailwind-logo.svg" width={50} height={50} alt="TailWind Logo" />
+            <Image className="h-8 w-auto" src="logo.svg" width={50} height={50} alt="TailWind Logo" />
           </Link>
         </div>
         <div className="flex lg:hidden">
