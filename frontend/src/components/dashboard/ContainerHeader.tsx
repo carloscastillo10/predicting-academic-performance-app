@@ -2,8 +2,14 @@ import React from 'react'
 import { ContainerTitle } from './ContainerTitle'
 
 interface Props {
-  title: string
-  subtitle?: string
+  title: {
+    value: string | number
+    size: string
+  }
+  subtitle?: {
+    value: string | number
+    size: string
+  }
 }
 
 export function ContainerHeader({ title, subtitle }: Props): React.JSX.Element {

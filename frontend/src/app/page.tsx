@@ -10,7 +10,7 @@ export default function Home() {
       <main className="relative isolate mt-20 px-6 py-6 lg:px-8 lg:py-8 bg-white rounded-t-3xl">
         <div className="flex justify-between items-center flex-wrap gap-4">
           <div className="flex flex-col">
-            <h2 className="text-gray-950 text-4xl font-extrabold">27,440</h2>
+            <h2 className="text-gray-950 text-5xl font-extrabold">27,440</h2>
             <p className="text-gray-600 text-sm font-medium">Estudiantes clasificados</p>
           </div>
           <Link
