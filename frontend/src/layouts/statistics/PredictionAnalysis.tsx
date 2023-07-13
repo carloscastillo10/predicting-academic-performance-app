@@ -1,22 +1,47 @@
 import React from 'react'
 import { Container } from '@components/dashboard/Container'
-import { ContainerHeader } from '@components/dashboard/ContainerHeader'
+import { CardHeader } from '@components/dashboard/CardHeader'
+import { CardBody } from '@components/dashboard/CardBody'
+import { Card } from '@components/dashboard/Card'
 
-export function PredictionAnalysisLayout(): React.JSX.Element {
-  const title = {
+const data = {
+  title: {
     value: 'Análisis de Predicciones',
     size: 'text-xl',
-  }
-
-  const subtitle = {
-    value: 'Ver las predicciones por provincia y cantón.',
+  },
+  subtitle: {
+    value: 'Ver las predicciones por provincia, cantón y materia',
     size: 'text-sm',
-  }
+  },
+  provinceCanton: {
+    title: {
+      value: 'Predicciones por provincia y cantón',
+      size: 'text-lg',
+    },
+  },
+  subjects: {
+    title: {
+      value: 'Predicciones por materia',
+      size: 'text-lg',
+    },
+    subtitle: {
+      value: 'Ver todas las materias',
+      size: 'text-xs',
+    },
+  },
+}
 
+export function PredictionAnalysisLayout(): React.JSX.Element {
   return (
     <>
       <Container bgColor="bg-container">
-        <ContainerHeader title={title} subtitle={subtitle} />
+        <CardHeader title={data.title} subtitle={data.subtitle} />
+        <CardBody>
+          <div className="mt-6 grid grid-cols-1 gap-6">
+            <Card title={data.provinceCanton.title} />
+            <Card title={data.subjects.title} subtitle={data.subjects.subtitle} />
+          </div>
+        </CardBody>
       </Container>
     </>
   )

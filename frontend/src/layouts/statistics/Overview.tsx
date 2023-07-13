@@ -1,35 +1,60 @@
 import React from 'react'
 import { Container } from '@components/dashboard/Container'
-import { ContainerHeader } from '@components/dashboard/ContainerHeader'
-import { ContainerBody } from '@components/dashboard/ContainerBody'
-import { ApprovedStudentsLayout } from './ApprovedStudents'
-import { FailedStudentsLayout } from './FailedStudents'
-import { LatestPredictionsLayout } from './LatestPredictions'
+import { CardHeader } from '@components/dashboard/CardHeader'
+import { CardBody } from '@components/dashboard/CardBody'
+import { Card } from '@components/dashboard/Card'
 
-export function OverviewLayout(): React.JSX.Element {
-  const title = {
+const data = {
+  title: {
     value: 'Descripción general',
     size: 'text-xl',
-  }
-
-  const subtitle = {
-    value: 'Predicciones de estudiantes aprobados y reprobados.',
+  },
+  subtitle: {
+    value: 'Predicciones de estudiantes aprobados y reprobados',
     size: 'text-sm',
-  }
+  },
+  approvedStudents: {
+    title: {
+      value: 233,
+      size: 'text-lg',
+    },
+    subtitle: {
+      value: 'Estudiantes aprobados en los últimos 7 días',
+      size: 'text-xs',
+    },
+  },
+  failedStudents: {
+    title: {
+      value: 125,
+      size: 'text-lg',
+    },
+    subtitle: {
+      value: 'Estudiantes reprobados en los últimos 7 días',
+      size: 'text-xs',
+    },
+  },
+  latestPredictions: {
+    title: {
+      value: 'Últimas predicciones',
+      size: 'text-md',
+    },
+  },
+}
 
+export function OverviewLayout(): React.JSX.Element {
   return (
     <>
       <Container bgColor="bg-container">
-        <ContainerHeader title={title} subtitle={subtitle} />
-        <ContainerBody>
+        <CardHeader title={data.title} subtitle={data.subtitle} />
+        <CardBody>
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6 ">
-            <ApprovedStudentsLayout />
-            <FailedStudentsLayout />
+            <Card title={data.approvedStudents.title} subtitle={data.approvedStudents.subtitle} />
+            <Card title={data.failedStudents.title} subtitle={data.failedStudents.subtitle} />
           </div>
-          <div className="grid grid-cols-1">
-            <LatestPredictionsLayout />
+          <div className="mt-6 grid grid-cols-1">
+            <Card title={data.latestPredictions.title} />
           </div>
-        </ContainerBody>
+        </CardBody>
       </Container>
     </>
   )
