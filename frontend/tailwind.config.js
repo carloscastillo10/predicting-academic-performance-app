@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       colors: {
         custom: '#003f72',
+        container: '#e9ecef',
         hover: {
           custom: '#0269bd',
         },
