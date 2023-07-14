@@ -1,23 +1,14 @@
 import React from 'react'
 import { Container } from '@components/dashboard/Container'
 import { CardHeader } from '@components/dashboard/CardHeader'
+import { CardProps } from '@utils/dashboard'
 
-export interface DashboardProps {
-  title: {
-    value: string | number
-    size: string
-  }
-  subtitle?: {
-    value: string | number
-    size: string
-  }
-}
-
-export function Card({ title, subtitle }: DashboardProps): React.JSX.Element {
+export function Card({ title, subtitle, children }: CardProps): React.JSX.Element {
   return (
     <>
-      <Container bgColor="bg-white">
+      <Container bgColor="bg-white shadow">
         <CardHeader title={title} subtitle={subtitle} />
+        {children}
       </Container>
     </>
   )

@@ -1,8 +1,8 @@
 import React from 'react'
 import { CardTitle } from '@components/dashboard/CardTitle'
-import { DashboardProps } from '@components/dashboard/Card'
+import { CardProps } from '@utils/dashboard'
 
-export function CardHeader({ title, subtitle }: DashboardProps): React.JSX.Element {
+export function CardHeader({ title, subtitle }: CardProps): React.JSX.Element {
   return (
     <>
       <CardTitle title={title} subtitle={subtitle} />
