@@ -7,6 +7,7 @@ import { BarChar } from '@components/dashboard/charts/BarChar'
 import { barChartDataApprovedStudents, barChartOptionsApprovedStudents } from '@variables/charts/ApprovedStudents'
 import { LineAreaChart } from '@components/dashboard/charts/LineaAreaChart'
 import { lineChartDataFailedStudents, lineChartOptionsFailedStudents } from '@variables/charts/FailedStudents'
+import { OverViewTable } from '@components/dashboard/tables/OverviewTable'
 
 const data = {
   title: {
@@ -66,7 +67,11 @@ export function OverviewLayout(): React.JSX.Element {
             </Card>
           </div>
           <div className="mt-6 grid grid-cols-1">
-            <Card title={data.latestPredictions.title} />
+            <Card title={data.latestPredictions.title}>
+              <CardBody>
+                <OverViewTable />
+              </CardBody>
+            </Card>
           </div>
         </CardBody>
       </Container>

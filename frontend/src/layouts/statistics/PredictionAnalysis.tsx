@@ -60,7 +60,7 @@ export function PredictionAnalysisLayout(): React.JSX.Element {
           <div className="mt-6 grid grid-cols-1 gap-6">
             <Card title={headers.provinceCanton.title}>
               <div className="flex items-end gap-1">
-                <p className="mt-1 text-2xl text-custom font-extrabold leading-[100%]">{data.total}</p>
+                <p className="mt-1 text-2xl text-custom font-bold leading-[100%]">{data.total}</p>
                 <p className="text-sm text-gray-600 font-medium leading-4 lg:leading-[1.25rem]">
                   en
                   <span className="font-bold ml-1">{data.country}</span>
