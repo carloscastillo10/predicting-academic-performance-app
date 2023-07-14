@@ -7,6 +7,9 @@ module.exports = {
       colors: {
         custom: '#003f72',
         container: '#f4f4fa',
+        approved: '#6d9984',
+        failed: '#ee5d50',
+        legend: '#e7e7f3',
         hover: {
           custom: '#0269bd',
         },

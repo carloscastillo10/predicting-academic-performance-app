@@ -1,11 +1,11 @@
 export const barChartDataProvinceStudents = [
   {
-    name: 'Estudiantes Aprobados',
-    data: [20, 30, 40, 20, 45, 50, 30, 80, 20, 10],
+    name: 'Aprobados',
+    data: [20, 30, 40, 20, 45, 50, 30, 80, 20, 10, 30, 23],
   },
   {
-    name: 'Estudiantes Reprobados',
-    data: [10, 10, 30, 50, 15, 20, 10, 50, 40, 30],
+    name: 'Reprobados',
+    data: [10, 10, 30, 50, 15, 20, 10, 50, 40, 30, 23, 18],
   },
 ]
 
@@ -19,20 +19,21 @@ export const barChartOptionsProvinceStudents = {
     stackType: '100%',
   },
   legend: {
-    position: 'top',
-    fontSize: '12px',
-    fontWeight: 600,
-    markers: {
-      width: 12,
-      height: 12,
-      strokeWidth: 0,
-      radius: 10,
-      offsetX: 0,
-      offsetY: 0,
-    },
-    labels: {
-      colors: ['#4b5563'],
-    },
+    show: false,
+    // position: 'top',
+    // fontSize: '12px',
+    // fontWeight: 600,
+    // markers: {
+    //   width: 12,
+    //   height: 12,
+    //   strokeWidth: 0,
+    //   radius: 10,
+    //   offsetX: 0,
+    //   offsetY: 0,
+    // },
+    // labels: {
+    //   colors: ['#4b5563'],
+    // },
   },
   tooltip: {
     style: {
@@ -45,17 +46,17 @@ export const barChartOptionsProvinceStudents = {
         fontFamily: undefined,
       },
     },
-    theme: 'light',
+    theme: 'dark',
   },
   xaxis: {
-    categories: ['Azuay', 'Bolivar', 'Cañar', 'Carchi', 'Cotopaxi', 'El Oro', 'Esmeraldas', 'Guayas', 'Loja', 'Pichincha'],
+    categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
     show: false,
     labels: {
       show: true,
       rotate: -45,
       style: {
         colors: '#A3AED0',
-        fontSize: '14px',
+        fontSize: '12px',
         fontWeight: '500',
       },
     },

@@ -23,7 +23,10 @@ export const barChartOptionsApprovedStudents = {
         fontFamily: undefined,
       },
     },
-    theme: 'light',
+    marker: {
+      show: true,
+    },
+    theme: 'dark',
   },
   xaxis: {
     categories: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
@@ -32,7 +35,7 @@ export const barChartOptionsApprovedStudents = {
       show: true,
       style: {
         colors: '#A3AED0',
-        fontSize: '14px',
+        fontSize: '12px',
         fontWeight: '500',
       },
     },
@@ -50,7 +53,7 @@ export const barChartOptionsApprovedStudents = {
       show: true,
       style: {
         colors: '#CBD5E0',
-        fontSize: '14px',
+        fontSize: '12px',
       },
     },
   },
@@ -97,7 +100,7 @@ export const barChartOptionsApprovedStudents = {
   plotOptions: {
     bar: {
       borderRadius: 10,
-      columnWidth: '40px',
+      columnWidth: '30px',
     },
   },
 }

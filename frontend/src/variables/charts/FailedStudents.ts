@@ -63,20 +63,21 @@ export const lineChartOptionsFailedStudents = {
     },
   },
   yaxis: {
-    categories: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
-    labels: {
-      style: {
-        colors: '#A3AED0',
-        fontSize: '12px',
-        fontWeight: '500',
-      },
-    },
-    axisBorder: {
-      show: false,
-    },
-    axisTicks: {
-      show: true,
-    },
+    show: false,
+    // categories: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
+    // labels: {
+    //   style: {
+    //     colors: '#A3AED0',
+    //     fontSize: '12px',
+    //     fontWeight: '500',
+    //   },
+    // },
+    // axisBorder: {
+    //   show: false,
+    // },
+    // axisTicks: {
+    //   show: true,
+    // },
   },
   legend: {
     show: false,

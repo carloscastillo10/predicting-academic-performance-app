@@ -14,27 +14,29 @@ const data = {
     size: 'text-xl',
   },
   subtitle: {
-    value: 'Predicciones de estudiantes aprobados y reprobados',
+    value: 'Predicción de estudiantes aprobados y reprobados',
     size: 'text-sm',
   },
   approvedStudents: {
     title: {
       value: 233,
-      size: 'text-xl',
+      size: 'text-2xl',
+      color: 'text-custom',
     },
     subtitle: {
       value: 'Estudiantes aprobados en los últimos 7 días',
-      size: 'text-xs',
+      size: 'text-sm',
     },
   },
   failedStudents: {
     title: {
       value: 125,
-      size: 'text-xl',
+      size: 'text-2xl',
+      color: 'text-custom',
     },
     subtitle: {
       value: 'Estudiantes reprobados en los últimos 7 días',
-      size: 'text-xs',
+      size: 'text-sm',
     },
   },
   latestPredictions: {
