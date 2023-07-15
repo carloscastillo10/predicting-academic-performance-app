@@ -12,19 +12,25 @@ interface Props {
 }
 
 export function Nav({ navigation, setMobileMenuOpen }: Props): React.JSX.Element {
+  const mobileMenuHandler = (): void => {
+    setMobileMenuOpen(true)
+  }
+
   return (
     <>
       <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <Image className="h-8 w-auto" src="logo.svg" width={50} height={50} alt="TailWind Logo" />
+            <div className="flex items-center gap-2">
+              <Image className="h-8 w-auto" src="logo.svg" width={50} height={50} alt="TailWind Logo" />
+              <h1 className="text-sm text-white font-extrabold tracking-wide md:text-xl lg:text-2xl leading-[100%]">Predicción del Rendimiento Académico</h1>
+            </div>
           </Link>
         </div>
         <div className="flex lg:hidden">
-          <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" onClick={() => setMobileMenuOpen(true)}>
+          <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" onClick={mobileMenuHandler}>
             <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            <Bars3Icon className="h-6 w-6 text-gray-100" aria-hidden="true" />
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">

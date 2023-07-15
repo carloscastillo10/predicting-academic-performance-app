@@ -26,7 +26,10 @@
       "@app/*": ["app/*"],
       "@common/*": ["common/*"],
       "@components/*": ["components/*"],
+      "@layouts/*": ["layouts/*"],
       "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"],
+      "@variables/*": ["variables/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

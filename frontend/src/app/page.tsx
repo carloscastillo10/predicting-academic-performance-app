@@ -1,12 +1,34 @@
 import { Header } from '@components/Header'
+import { PlusCircleIcon } from '@heroicons/react/24/outline'
+import { StatisticsLayout } from '@layouts/statistics'
 import Link from 'next/link'
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main>
-        <div className="relative isolate px-6 pt-14 lg:px-8">
+      <main className="relative isolate mt-20 mx-2 px-6 py-6 lg:px-8 lg:py-8 bg-white rounded-t-3xl">
+        <div className="flex justify-between items-center flex-wrap gap-4">
+          <div className="flex flex-col">
+            <h2 className="text-gray-950 text-5xl font-extrabold">27,440</h2>
+            <p className="text-gray-600 text-sm font-medium">Estudiantes clasificados</p>
+          </div>
+          <Link
+            href="/"
+            className="group inline-flex items-center justify-center rounded-2xl py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-custom text-white hover:bg-hover-custom hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:bg-hover-custom"
+          >
+            <PlusCircleIcon className="h-6 w-6 flex-none fill-custom group-active:fill-current" />
+            <span className="ml-3">Clasificar nuevo estudiante</span>
+          </Link>
+        </div>
+        <StatisticsLayout />
+      </main>
+    </>
+  )
+}
+
+/*
+<div className="relative isolate px-6 pt-14 lg:px-8">
           <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div
               className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
@@ -54,7 +76,4 @@ export default function Home() {
             />
           </div>
         </div>
-      </main>
-    </>
-  )
-}
+*/
