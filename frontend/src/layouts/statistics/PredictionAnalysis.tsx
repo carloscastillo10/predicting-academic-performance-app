@@ -6,6 +6,7 @@ import { Card } from '@components/dashboard/Card'
 import { BarChar } from '@components/dashboard/charts/BarChar'
 import { barChartDataProvinceStudents, barChartOptionsProvinceStudents } from '@variables/charts/ProvincePredictions'
 import { Legend } from '@components/dashboard/charts/Legend'
+import { PredictionAnalysisTable } from '@components/dashboard/tables/PredictionAnalysisTable'
 
 const headers = {
   title: {
@@ -29,7 +30,7 @@ const headers = {
     },
     subtitle: {
       value: 'Ver todas las materias',
-      size: 'text-xs',
+      size: 'text-sm',
     },
   },
 }
@@ -74,7 +75,11 @@ export function PredictionAnalysisLayout(): React.JSX.Element {
                 <BarChar chartData={barChartDataProvinceStudents} chartOptions={barChartOptionsProvinceStudents} />
               </div>
             </Card>
-            <Card title={headers.subjects.title} subtitle={headers.subjects.subtitle} />
+            <Card title={headers.subjects.title} subtitle={headers.subjects.subtitle}>
+              <CardBody>
+                <PredictionAnalysisTable />
+              </CardBody>
+            </Card>
           </div>
         </CardBody>
       </Container>
