@@ -1,7 +1,9 @@
 'use client'
 import { ApexChartProps } from '@utils/dashboard'
+import dynamic from 'next/dynamic'
 import React from 'react'
-import Chart from 'react-apexcharts'
+
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 export function LineAreaChart({ chartData, chartOptions }: ApexChartProps): React.JSX.Element {
   return (
