@@ -14,7 +14,7 @@ const headers = {
     size: 'text-xl',
   },
   subtitle: {
-    value: 'Ver las predicciones por provincia y materia',
+    value: 'Predicciones por provincia y materia',
     size: 'text-sm',
   },
   provinceCanton: {
