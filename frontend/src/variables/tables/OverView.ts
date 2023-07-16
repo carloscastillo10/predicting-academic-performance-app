@@ -108,7 +108,7 @@ export const overViewStudents = [
     identification: '1104999222',
     date: '11 Jul 2023',
     time: '09:43',
-    subject: 'Lógica de la Programacación',
+    subject: 'Lógica de la Programación',
     status: 'Reprobada',
     province: 'Cotopaxi',
     age: 23,

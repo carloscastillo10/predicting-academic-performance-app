@@ -10,7 +10,7 @@ import { PredictionAnalysisTable } from '@components/dashboard/tables/Prediction
 
 const headers = {
   title: {
-    value: 'Análisis de Predicciones',
+    value: 'Análisis de predicciones',
     size: 'text-xl',
   },
   subtitle: {
