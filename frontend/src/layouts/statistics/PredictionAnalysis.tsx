@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container } from '@components/dashboard/Container'
 import { CardHeader } from '@components/dashboard/CardHeader'
 import { CardBody } from '@components/dashboard/CardBody'
@@ -7,6 +6,9 @@ import { BarChar } from '@components/dashboard/charts/BarChar'
 import { barChartDataProvinceStudents, barChartOptionsProvinceStudents } from '@variables/charts/ProvincePredictions'
 import { Legend } from '@components/dashboard/charts/Legend'
 import { PredictionAnalysisTable } from '@components/dashboard/tables/PredictionAnalysisTable'
+import { SelectFilter } from '@components/dashboard/filters/Select'
+import React from 'react'
+import { provinces, years } from '@variables/filters/PredictionAnalysis'
 
 const headers = {
   title: {
@@ -56,7 +58,15 @@ export function PredictionAnalysisLayout(): React.JSX.Element {
   return (
     <>
       <Container bgColor="bg-container">
-        <CardHeader title={headers.title} subtitle={headers.subtitle} />
+        <div className="flex flex-col gap-3 flex-wrap md:flex-row md:justify-between md:items-center">
+          <div>
+            <CardHeader title={headers.title} subtitle={headers.subtitle} />
+          </div>
+          <div className="flex gap-2">
+            <SelectFilter items={years} />
+            <SelectFilter items={provinces} />
+          </div>
+        </div>
         <CardBody>
           <div className="mt-6 grid grid-cols-1 gap-6">
             <Card title={headers.provinceCanton.title}>

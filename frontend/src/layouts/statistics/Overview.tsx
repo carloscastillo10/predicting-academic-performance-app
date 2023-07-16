@@ -9,6 +9,7 @@ import { LineAreaChart } from '@components/dashboard/charts/LineaAreaChart'
 import { lineChartDataFailedStudents, lineChartOptionsFailedStudents } from '@variables/charts/FailedStudents'
 import { OverViewTable } from '@components/dashboard/tables/OverviewTable'
 import { CalendarIcon } from '@heroicons/react/24/outline'
+import { ButtonFilter } from '@components/dashboard/filters/Button'
 
 const data = {
   title: {
@@ -49,6 +50,8 @@ const data = {
   },
 }
 
+const filters = [{ text: '7 días' }, { text: '14 días' }, { text: '30 días' }]
+
 export function OverviewLayout(): React.JSX.Element {
   return (
     <>
@@ -59,15 +62,9 @@ export function OverviewLayout(): React.JSX.Element {
           </div>
           <div className="flex gap-2">
             <div className="flex justify-between items-center border-[1px] border-gray-300 w-max h-[35px] rounded-full">
-              <button className="inline-flex justify-center items-center whitespace-nowrap w-16 h-[35px] hover:bg-custom active:bg-custom focus:bg-custom focus-visible:bg-custom text-sm text-gray-600 hover:text-white active:text-white focus:text-white focus-visible:text-white hover:font-bold active:font-bold focus:font-bold focus-visible:font-bold font-medium rounded-full px-3 py-1">
-                7 días
-              </button>
-              <button className="inline-flex justify-center items-center whitespace-nowrap w-16 h-[35px] hover:bg-custom active:bg-custom focus:bg-custom focus-visible:bg-custom text-sm text-gray-600 hover:text-white active:text-white focus:text-white focus-visible:text-white hover:font-bold active:font-bold focus:font-bold focus-visible:font-bold font-medium rounded-full px-3 py-1">
-                14 días
-              </button>
-              <button className="inline-flex justify-center items-center whitespace-nowrap w-16 h-[35px] hover:bg-custom active:bg-custom focus:bg-custom focus-visible:bg-custom text-sm text-gray-600 hover:text-white active:text-white focus:text-white focus-visible:text-white hover:font-bold active:font-bold focus:font-bold focus-visible:font-bold font-medium rounded-full px-3 py-1">
-                30 días
-              </button>
+              {filters.map((filter, index) => (
+                <ButtonFilter key={index} text={filter.text} />
+              ))}
             </div>
             <button className="flex justify-between items-center whitespace-nowrap w-[40px] h-[35px] border-[1px] border-gray-300 hover:bg-custom active:bg-custom focus:bg-custom focus-visible:bg-custom [&>svg]:hover:text-white [&>svg]:active:text-white [&>svg]:focus:text-white [&>svg]:focus-visible:text-white rounded-full px-2 py-1">
               <CalendarIcon className="w-10 h-10 text-gray-600" />

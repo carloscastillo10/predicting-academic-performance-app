@@ -35,13 +35,13 @@ export function Nav({ navigation, setMobileMenuOpen }: Props): React.JSX.Element
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <Link key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+            <Link key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-300">
               {item.name}
             </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link href="/" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link href="/" className="text-sm font-semibold leading-6 text-gray-300">
             Log in <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>

@@ -4,10 +4,8 @@ import { Nav } from 'common/Nav'
 import { SideBar } from '@common/SideBar'
 
 const navigation = [
-  { name: 'Product', href: '/' },
-  { name: 'Features', href: '/' },
-  { name: 'Marketplace', href: '/' },
-  { name: 'Company', href: '/' },
+  { name: 'Dashboard', href: '/' },
+  { name: 'Clasificar estudiante', href: '/' },
 ]
 
 export function Header(): React.JSX.Element {
