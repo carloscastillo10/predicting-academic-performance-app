@@ -20,3 +20,9 @@ export interface ApexChartProps {
   }[]
   chartOptions: {}
 }
+
+export interface SearchProps {
+  items: {
+    value: string
+  }[]
+}

@@ -58,13 +58,13 @@ export function PredictionAnalysisLayout(): React.JSX.Element {
   return (
     <>
       <Container bgColor="bg-container">
-        <div className="flex flex-col gap-3 flex-wrap md:flex-row md:justify-between md:items-center">
+        <div className="flex flex-col gap-3 flex-wrap md:flex-row md:justify-between md:items-start">
           <div>
             <CardHeader title={headers.title} subtitle={headers.subtitle} />
           </div>
-          <div className="flex gap-2">
-            <SelectFilter items={years} />
-            <SelectFilter items={provinces} />
+          <div className="flex flex-wrap gap-2">
+            <SelectFilter items={provinces.items} defaulValue={provinces.defaulValue} searcheable={true} />
+            <SelectFilter items={years.items} defaulValue={years.defaulValue} />
           </div>
         </div>
         <CardBody>

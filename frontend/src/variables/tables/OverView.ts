@@ -1,5 +1,5 @@
 export const overViewTableheaders = [
-  { name: '.' },
+  { name: '' },
   { name: 'estudiante' },
   { name: 'fecha' },
   { name: 'materia' },

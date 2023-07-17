@@ -56,7 +56,7 @@ export function OverviewLayout(): React.JSX.Element {
   return (
     <>
       <Container bgColor="bg-container">
-        <div className="flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
+        <div className="flex flex-col gap-3 md:flex-row md:justify-between md:items-start">
           <div>
             <CardHeader title={data.title} subtitle={data.subtitle} />
           </div>

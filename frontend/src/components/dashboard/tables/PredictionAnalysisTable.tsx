@@ -6,7 +6,7 @@ import React from 'react'
 export function PredictionAnalysisTable(): React.JSX.Element {
   return (
     <>
-      <div className="relative overflow-x-auto mt-4">
+      <div className="relative overflow-x-auto mt-4 scrollbar-show">
         <table className="w-full">
           <tbody>
             {predictionAnalysisSubjects.map((subject, index) => (
