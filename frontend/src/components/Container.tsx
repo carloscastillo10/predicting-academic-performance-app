@@ -8,7 +8,7 @@ interface Props {
 export function Container({ bgColor, children }: Props): React.JSX.Element {
   return (
     <>
-      <div className={`relative isolate px-4 py-4 lg:px-6 lg:py-6 ${bgColor} rounded-2xl`}>{children}</div>
+      <div className={`relative isolate px-4 py-4 lg:px-6 lg:py-6 ${bgColor} rounded-2xl w-full`}>{children}</div>
     </>
   )
 }
