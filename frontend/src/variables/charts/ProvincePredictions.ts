@@ -20,20 +20,6 @@ export const barChartOptionsProvinceStudents = {
   },
   legend: {
     show: false,
-    // position: 'top',
-    // fontSize: '12px',
-    // fontWeight: 600,
-    // markers: {
-    //   width: 12,
-    //   height: 12,
-    //   strokeWidth: 0,
-    //   radius: 10,
-    //   offsetX: 0,
-    //   offsetY: 0,
-    // },
-    // labels: {
-    //   colors: ['#4b5563'],
-    // },
   },
   tooltip: {
     style: {
