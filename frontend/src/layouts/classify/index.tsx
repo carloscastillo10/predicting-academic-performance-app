@@ -139,7 +139,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
                           Sexo
                         </label>
                         <div className="mt-2">
-                          <SelectForm items={sexs.items} defaulValue={-1} id="sex" name="sex" />
+                          <SelectForm items={sexs.items} defaulValue={-1} id="sex" />
                         </div>
                       </div>
 

@@ -15,10 +15,9 @@ interface Props extends SearchProps {
   defaulValue: number
   searcheable?: boolean
   id: string
-  name: string
 }
 
-export function SelectForm({ items, defaulValue, searcheable, id, name }: Props): React.JSX.Element {
+export function SelectForm({ items, defaulValue, searcheable, id }: Props): React.JSX.Element {
   const { searchValue, setSearchValue, searchedItems } = useSelectFilter({
     items: items,
   })
@@ -41,11 +40,7 @@ export function SelectForm({ items, defaulValue, searcheable, id, name }: Props)
               <ChevronDownIcon className="h-5 w-5 text-gray-600" aria-hidden="true" />
             </Listbox.Button>
             <Transition show={open} as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
-              <Listbox.Options
-                className="scrollbar-show scrollbar-x-hidden absolute z-20 w-full overflow-auto mt-1 rounded-lg bg-white py-1 shadow-lg focus:ring-2 focus:ring-container"
-                id={id}
-                refName={name}
-              >
+              <Listbox.Options className="scrollbar-show scrollbar-x-hidden absolute z-20 w-full overflow-auto mt-1 rounded-lg bg-white py-1 shadow-lg focus:ring-2 focus:ring-container" id={id}>
                 {searcheable ? <Search searchValue={searchValue} setSearchValue={setSearchValue} /> : null}
                 {!items.length && <span className="text-gray-600 block w-full ml-1 px-3 py-1 font-medium text-sm">No hay concidencias</span>}
                 {items?.map((item, index) => (
