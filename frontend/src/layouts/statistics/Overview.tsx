@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { Container } from '@components/dashboard/Container'
 import { CardHeader } from '@components/dashboard/CardHeader'
 import { CardBody } from '@components/dashboard/CardBody'
@@ -53,6 +54,16 @@ const data = {
 const filters = [{ text: '7 días' }, { text: '14 días' }, { text: '30 días' }]
 
 export function OverviewLayout(): React.JSX.Element {
+  const [active, setActive] = useState(0)
+  const onClickHandler = (id: number) => {
+    setActive(id)
+  }
+
+  const calendarHandler = () => {
+    setActive(-1)
+    console.log('desplegar calendario')
+  }
+
   return (
     <>
       <Container bgColor="bg-container">
@@ -63,10 +74,14 @@ export function OverviewLayout(): React.JSX.Element {
           <div className="flex gap-2">
             <div className="flex justify-between items-center border-[1px] border-gray-300 w-max h-[35px] rounded-full">
               {filters.map((filter, index) => (
-                <ButtonFilter key={index} text={filter.text} />
+                <ButtonFilter key={index} text={filter.text} id={index} active={active} onClickHandler={onClickHandler} />
               ))}
             </div>
-            <button className="flex justify-between items-center whitespace-nowrap w-[40px] h-[35px] border-[1px] border-gray-300 hover:bg-custom active:bg-custom focus:bg-custom focus-visible:bg-custom [&>svg]:hover:text-white [&>svg]:active:text-white [&>svg]:focus:text-white [&>svg]:focus-visible:text-white rounded-full px-2 py-1">
+            <button
+              key={-1}
+              className="flex justify-between items-center whitespace-nowrap w-[40px] h-[35px] border-[1px] border-gray-300 hover:bg-custom active:bg-custom focus:bg-custom focus-visible:bg-custom [&>svg]:hover:text-white [&>svg]:active:text-white [&>svg]:focus:text-white [&>svg]:focus-visible:text-white rounded-full px-2 py-1"
+              onClick={calendarHandler}
+            >
               <CalendarIcon className="w-10 h-10 text-gray-600" />
             </button>
           </div>
