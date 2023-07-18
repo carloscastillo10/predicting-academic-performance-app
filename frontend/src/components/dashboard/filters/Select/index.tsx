@@ -2,7 +2,7 @@
 import React, { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
-import styles from './Select.module.css'
+import styles from '@styles/Select.module.css'
 import { Search } from '@components/dashboard/Search'
 import { useSelectFilter } from '@hooks/useSelectFilter'
 import { SearchProps } from '@utils/dashboard'

@@ -28,7 +28,7 @@
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
       "@layouts/*": ["layouts/*"],
-      "@styles/*": ["styles/*"],
+      "@styles/*": ["assets/styles/*"],
       "@utils/*": ["utils/*"],
       "@variables/*": ["variables/*"]
     }

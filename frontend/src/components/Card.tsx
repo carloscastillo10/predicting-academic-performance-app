@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container } from '@components/dashboard/Container'
-import { CardHeader } from '@components/dashboard/CardHeader'
+import { Container } from '@components/Container'
+import { CardHeader } from '@components/CardHeader'
 import { CardProps } from '@utils/dashboard'
 
 export function Card({ title, subtitle, children }: CardProps): React.JSX.Element {
