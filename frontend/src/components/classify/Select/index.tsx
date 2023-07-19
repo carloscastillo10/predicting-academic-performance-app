@@ -13,7 +13,7 @@ function classNames(...classes: string[]) {
 
 interface Props extends SearchProps {
   defaulValue: number
-  searcheable?: boolean
+  searcheable: boolean
   id: string
 }
 
