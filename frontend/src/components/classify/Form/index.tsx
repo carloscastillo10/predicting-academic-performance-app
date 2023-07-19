@@ -20,31 +20,31 @@ interface Props {
   max?: number
 }
 
-export function Input({ size, label, type, required, id, name, placeholder, items, defaultValue, searchable, min, max }: Props): React.JSX.Element {
+export function Input({ ...props }: Props): React.JSX.Element {
   const renderInput = (type: string): React.JSX.Element => {
     switch (type) {
       case 'number': {
-        return <InputNummber id={id} name={name} placeholder={placeholder} min={min} max={max} required={required} />
+        return <InputNummber {...props} />
       }
 
       case 'select': {
-        return <SelectForm items={items || []} defaulValue={defaultValue || -1} id={id} searcheable={searchable || false} />
+        return <SelectForm items={props.items || []} defaulValue={props.defaultValue || -1} id={props.id} searcheable={props.searchable || false} />
       }
 
       default: {
-        return <InputText id={id} name={name} placeholder={placeholder} required={required} />
+        return <InputText {...props} />
       }
     }
   }
 
   return (
     <>
-      <div className={size ? size : 'sm:col-span-4'}>
-        <label htmlFor={id} className="block text-sm font-bold leading-6 text-gray-700">
-          {label}
-          {required && <span className="ml-1 text-sm text-red-500">*</span>}
+      <div className={props.size ? props.size : 'sm:col-span-4'}>
+        <label htmlFor={props.id} className="block text-sm font-bold leading-6 text-gray-700">
+          {props.label}
+          {props.required && <span className="ml-1 text-sm text-red-500">*</span>}
         </label>
-        <div className="mt-2">{renderInput(type)}</div>
+        <div className="mt-2">{renderInput(props.type)}</div>
       </div>
     </>
   )

@@ -28,23 +28,7 @@ export function EnrollmentForm(): React.JSX.Element {
     <Card title={data.title} subtitle={data.subtitle}>
       <form className="mb-2">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          {enrollmentInputs.data?.map((input, index) => (
-            <Input
-              key={index}
-              size={input.size}
-              label={input.label}
-              type={input.type}
-              required={input.required}
-              id={input.id}
-              name={input.name}
-              placeholder={input.placeholder}
-              items={input.items}
-              defaultValue={input.defaulValue}
-              searchable={input.searcheable}
-              min={input.min}
-              max={input.max}
-            />
-          ))}
+          {enrollmentInputs.data?.map((props, index) => <Input key={index} {...props} />)}
 
           <div className={hasDisability ? 'sm:col-span-2' : 'sm:col-span-4'}>
             <fieldset>
