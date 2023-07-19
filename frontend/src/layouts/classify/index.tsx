@@ -7,6 +7,7 @@ import { Squares2X2Icon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { EnrollmentForm } from '@components/classify/Form/EnrollmentForm'
 import { MultiStep } from '@components/classify/Form/MultiStep'
+import { GradesForm } from '@components/classify/Form/GradesForm'
 
 const data = {
   title: {
@@ -33,7 +34,10 @@ export function ClassifyStudentLayout(): React.JSX.Element {
             <MultiStep />
             <CardBody>
               <div className="w-full lg:ml-16">
-                <EnrollmentForm />
+                <form className="mb-2">
+                  <EnrollmentForm />
+                  <GradesForm />
+                </form>
               </div>
             </CardBody>
           </div>

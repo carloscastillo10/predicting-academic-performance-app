@@ -61,7 +61,7 @@ export function OverviewLayout(): React.JSX.Element {
 
   const calendarHandler = () => {
     setActive(-1)
-    console.log('desplegar calendario')
+    console.log('Desplegar calendario')
   }
 
   return (

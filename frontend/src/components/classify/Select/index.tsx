@@ -2,19 +2,20 @@
 import React, { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
-import { Search } from '@components/dashboard/Search'
 import { useSelectFilter } from '@hooks/useSelectFilter'
 import { SearchProps } from '@utils/classify'
 import styles from '@styles/Select.module.css'
+import { Search } from '@components/classify/Form/Search'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 interface Props extends SearchProps {
-  defaulValue: number
-  searcheable: boolean
+  defaultValue: number
+  searchable: boolean
   id: string
+  placeholder: string
 }
 
 export function SelectForm({ ...props }: Props): React.JSX.Element {
@@ -23,8 +24,7 @@ export function SelectForm({ ...props }: Props): React.JSX.Element {
   })
 
   const items = searchedItems
-
-  const [selected, setSelected] = useState(items[props.defaulValue])
+  const [selected, setSelected] = useState(items[props.defaultValue])
   return (
     <>
       <Listbox value={selected} onChange={setSelected}>
@@ -35,13 +35,16 @@ export function SelectForm({ ...props }: Props): React.JSX.Element {
               aria-expanded="true"
             >
               <span className={classNames(selected?.value ? 'text-gray-700' : 'text-gray-400', 'ml-1 block truncate text-sm font-medium px-2.5')}>
-                {selected?.value ? selected.value : 'Seleccione una opción'}
+                {selected?.value ? selected.value : props.placeholder}
               </span>
               <ChevronDownIcon className="h-5 w-5 text-gray-600" aria-hidden="true" />
             </Listbox.Button>
             <Transition show={open} as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
-              <Listbox.Options className="scrollbar-show scrollbar-x-hidden absolute z-20 w-full overflow-auto mt-1 rounded-lg bg-white py-1 shadow-lg focus:ring-2 focus:ring-container" id={props.id}>
-                {props.searcheable ? <Search searchValue={searchValue} setSearchValue={setSearchValue} /> : null}
+              <Listbox.Options
+                className="scrollbar-show scrollbar-x-hidden absolute z-20 w-full overflow-auto mt-1 rounded-lg bg-white py-1 shadow-lg max-h-[25rem] focus:ring-2 focus:ring-container"
+                id={props.id}
+              >
+                {props.searchable ? <Search searchValue={searchValue} setSearchValue={setSearchValue} /> : null}
                 {!items.length && <span className="text-gray-600 block w-full ml-1 px-3 py-1 font-medium text-sm">No hay concidencias</span>}
                 {items?.map((item, index) => (
                   <Listbox.Option

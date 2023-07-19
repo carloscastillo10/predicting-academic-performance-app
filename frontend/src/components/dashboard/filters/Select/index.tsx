@@ -12,8 +12,8 @@ function classNames(...classes: string[]) {
 }
 
 interface Props extends SearchProps {
-  defaulValue: number
-  searcheable?: boolean
+  defaultValue: number
+  searchable?: boolean
 }
 
 export function SelectFilter({ ...props }: Props): React.JSX.Element {
@@ -23,7 +23,7 @@ export function SelectFilter({ ...props }: Props): React.JSX.Element {
 
   const items = searchedItems
 
-  const [selected, setSelected] = useState(items[props.defaulValue])
+  const [selected, setSelected] = useState(items[props.defaultValue])
   return (
     <>
       <Listbox value={selected} onChange={setSelected}>
@@ -38,7 +38,7 @@ export function SelectFilter({ ...props }: Props): React.JSX.Element {
             </Listbox.Button>
             <Transition show={open} as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
               <Listbox.Options className="scrollbar-show scrollbar-x-hidden absolute z-20 min-w-[6rem] md:max-w-[13rem] lg:max-w-[13.5rem] max-h-[25rem] overflow-auto mt-1 rounded-2xl bg-white py-1 shadow-lg focus:ring-2 focus:ring-container">
-                {props.searcheable ? <Search searchValue={searchValue} setSearchValue={setSearchValue} /> : null}
+                {props.searchable ? <Search searchValue={searchValue} setSearchValue={setSearchValue} /> : null}
                 {!items.length && <span className="text-gray-600 block w-full ml-1 px-3 py-1 font-medium text-sm">No hay concidencias</span>}
                 {items?.map((item, index) => (
                   <Listbox.Option

@@ -1,7 +1,7 @@
 export const enrollmentInputs = {
   data: [
     {
-      size: 'sm:col-span-3',
+      size: 'col-span-6 md:col-span-3',
       label: 'Identificación',
       type: 'text',
       required: true,
@@ -10,7 +10,7 @@ export const enrollmentInputs = {
       placeholder: 'Ej. 1101XXXXXX',
     },
     {
-      size: 'sm:col-span-3',
+      size: 'col-span-6 md:col-span-3',
       label: 'Nombres',
       type: 'text',
       required: true,
@@ -19,7 +19,7 @@ export const enrollmentInputs = {
       placeholder: 'Ej. Matias Antonio',
     },
     {
-      size: 'sm:col-span-3',
+      size: 'col-span-6 md:col-span-3',
       label: 'Apellidos',
       type: 'text',
       required: true,
@@ -28,7 +28,7 @@ export const enrollmentInputs = {
       placeholder: 'Ej. Rodriguez Perez',
     },
     {
-      size: 'sm:col-span-3',
+      size: 'col-span-6 md:col-span-1',
       label: 'Edad',
       type: 'number',
       required: false,
@@ -39,15 +39,16 @@ export const enrollmentInputs = {
       max: 100,
     },
     {
-      size: 'sm:col-span-2',
+      size: 'col-span-6 md:col-span-2',
       label: 'Sexo',
       type: 'select',
       required: false,
       id: 'sex',
       name: 'sex',
+      placeholder: 'Seleccione un sexo',
       items: [{ value: 'Hombre' }, { value: 'Mujer' }],
-      defaulValue: -1,
-      searcheable: false,
+      defaultValue: -1,
+      searchable: false,
     },
   ],
 }

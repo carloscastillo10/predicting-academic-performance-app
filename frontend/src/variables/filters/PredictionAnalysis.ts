@@ -1,6 +1,6 @@
 export const years = {
   items: [{ value: '2023' }, { value: '2022' }, { value: '2021' }, { value: '2020' }],
-  defaulValue: 0,
+  defaultValue: 0,
 }
 
 export const provinces = {
@@ -31,5 +31,5 @@ export const provinces = {
     { value: 'Tungurahua' },
     { value: 'Zamora Chinchipe' },
   ],
-  defaulValue: 11,
+  defaultValue: 11,
 }

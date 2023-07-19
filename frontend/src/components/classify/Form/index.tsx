@@ -1,7 +1,7 @@
 import React from 'react'
 import { SelectForm } from '@components/classify/Select'
 import { InputText } from '@components/classify/Form/InputText'
-import { InputNummber } from './InputNumber'
+import { InputNummber } from '@components/classify/Form/InputNumber'
 
 interface Props {
   size?: string
@@ -28,7 +28,15 @@ export function Input({ ...props }: Props): React.JSX.Element {
       }
 
       case 'select': {
-        return <SelectForm items={props.items || []} defaulValue={props.defaultValue || -1} id={props.id} searcheable={props.searchable || false} />
+        return (
+          <SelectForm
+            items={props.items || []}
+            defaultValue={props.defaultValue ?? -1}
+            id={props.id}
+            placeholder={props.placeholder ?? 'Seleccione una opción'}
+            searchable={props.searchable ?? false}
+          />
+        )
       }
 
       default: {
