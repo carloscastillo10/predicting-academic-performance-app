@@ -1,21 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import { Card } from '@components/Card'
-import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
 import { enrollmentInputs } from '@variables/forms/enrollment'
 import { Input } from '@components/classify/Form'
 import styles from '@styles/Checkbox.module.css'
-
-const data = {
-  title: {
-    value: 'Datos de Matriculas',
-    size: 'text-lg',
-  },
-  subtitle: {
-    value: 'Información personal de cada estudiante al momento de matricularse',
-    size: 'text-sm',
-  },
-}
 
 export function EnrollmentForm(): React.JSX.Element {
   const [hasDisability, setHasDisability] = useState(false)
@@ -25,7 +12,7 @@ export function EnrollmentForm(): React.JSX.Element {
   }
 
   return (
-    <Card title={data.title} subtitle={data.subtitle}>
+    <>
       <div className="mt-6 grid grid-cols-6 gap-x-6 gap-y-8">
         {enrollmentInputs?.data?.map((props, index) => <Input key={index} {...props} />)}
 
@@ -91,13 +78,6 @@ export function EnrollmentForm(): React.JSX.Element {
           </>
         )}
       </div>
-
-      <div className="mt-10 flex items-center justify-end">
-        <button className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-custom text-white hover:bg-hover-custom hover:font-bold active:bg-hover-custom active:text-slate-300 focus-visible:bg-hover-custom">
-          <span className="flex mr-2">Siguiente</span>
-          <ArrowLongRightIcon className="fill-white group-active:fill-current w-5 h-6" />
-        </button>
-      </div>
-    </Card>
+    </>
   )
 }

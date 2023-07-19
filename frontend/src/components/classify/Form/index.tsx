@@ -33,6 +33,7 @@ export function Input({ ...props }: Props): React.JSX.Element {
             items={props.items || []}
             defaultValue={props.defaultValue ?? -1}
             id={props.id}
+            name={props.name}
             placeholder={props.placeholder ?? 'Seleccione una opción'}
             searchable={props.searchable ?? false}
           />
