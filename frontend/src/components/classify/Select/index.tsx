@@ -23,7 +23,7 @@ export function SelectForm({ ...props }: Props): React.JSX.Element {
 
   const items = searchedItems
   const valueSelected = items[props.defaultValue] || {
-    value: props.placeholder,
+    value: undefined,
   }
 
   const [selected, setSelected] = useState(valueSelected)

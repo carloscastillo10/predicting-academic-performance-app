@@ -2,6 +2,8 @@ import React from 'react'
 import { SelectForm } from '@components/classify/Select'
 import { InputText } from '@components/classify/Form/InputText'
 import { InputNummber } from '@components/classify/Form/InputNumber'
+import { FormikErrors, FormikTouched } from 'formik'
+import { Student } from '@utils/classify'
 
 interface Props {
   size?: string
@@ -18,6 +20,8 @@ interface Props {
   searchable?: boolean
   min?: number
   max?: number
+  errors: FormikErrors<Student>
+  touched: FormikTouched<Student>
 }
 
 export function Input({ ...props }: Props): React.JSX.Element {
