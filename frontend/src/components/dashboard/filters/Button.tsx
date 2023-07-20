@@ -1,4 +1,5 @@
 'use client'
+import { classNames } from '@utils/funtions'
 import React from 'react'
 
 interface Props {
@@ -7,10 +8,6 @@ interface Props {
   active: number
   // eslint-disable-next-line no-unused-vars
   onClickHandler: (id: number) => void
-}
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
 }
 
 export function ButtonFilter({ ...props }: Props): React.JSX.Element {

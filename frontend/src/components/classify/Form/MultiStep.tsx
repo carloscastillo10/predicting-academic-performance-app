@@ -1,27 +1,46 @@
 import React from 'react'
-import { IdentificationIcon } from '@heroicons/react/20/solid'
-import { ChevronRightIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline'
+import { ChevronRightIcon, IdentificationIcon } from '@heroicons/react/20/solid'
+import { ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline'
+import { classNames } from '@utils/funtions'
+import styles from '@styles/MultiStep.module.css'
 
-export function MultiStep(): React.JSX.Element {
+interface Props {
+  active: number
+  onNextStepHandler: () => void
+  onPreviousStepHandler: () => void
+}
+
+export function MultiStep({ ...props }: Props): React.JSX.Element {
   return (
     <>
       <ol className="flex flex-row justify-between items-center w-full pr-1 md:justify-around lg:flex-col lg:items-start lg:justify-start lg:gap-y-20 lg:w-auto lg:min-w-[250px] lg:relative lg:pr-0 ">
-        <div className="hidden lg:flex absolute left-[18.5px] h-[160px] w-[3px] bg-gray-300 z-10 cursor-pointer"></div>
-        <li className="flex items-center text-white cursor-pointer z-20">
+        <button
+          className={classNames(props.active === 1 ? 'bg-custom' : 'bg-gray-300', `${styles.multistep__btn} hidden lg:flex absolute left-[18.5px] h-[160px] w-[3px] z-10 cursor-pointer`)}
+          onClick={props.onNextStepHandler}
+        ></button>
+        <button className="flex items-center text-white cursor-pointer z-20" onClick={props.onPreviousStepHandler}>
           <span className="flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 mr-2 bg-custom rounded-full shrink-0">
             <IdentificationIcon className="w-5 h-5" />
           </span>
           <span className="hidden text-sm text-gray-950 font-bold sm:inline-flex mr-1">Datos de</span>
           <span className="text-sm text-gray-950 font-bold">Matrículas</span>
-        </li>
-        <ChevronRightIcon className="flex w-5 h-5 text-custom cursor-pointer lg:hidden" />
-        <li className="flex items-center text-gray-600 cursor-pointer z-20">
-          <span className="flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 mr-2 bg-white border border-custom rounded-full shrink-0">
-            <ClipboardDocumentCheckIcon className="w-5 h-5" />
+        </button>
+        <ChevronRightIcon
+          className={classNames(props.active === 1 ? 'text-gray-950 w-6 h-6' : 'text-gray-600', `${styles.multistep__btn} flex w-5 h-5 cursor-pointer lg:hidden`)}
+          onClick={props.onNextStepHandler}
+        />
+        <button className="flex items-center text-gray-600 cursor-pointer z-20" onClick={props.onNextStepHandler}>
+          <span
+            className={classNames(
+              props.active === 1 ? 'bg-custom' : 'bg-white ring-1 ring-gray-600',
+              `${styles.multistep__btn} flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 mr-2 border rounded-full shrink-0`,
+            )}
+          >
+            <ClipboardDocumentCheckIcon className={classNames(props.active === 1 ? 'fill-custom text-white' : 'fill-white', 'w-5 h-5')} />
           </span>
-          <span className="hidden text-sm text-gray-600 font-medium sm:inline-flex mr-1">Datos de</span>
-          <span className="text-sm text-gray-600 font-medium">Calificaciones</span>
-        </li>
+          <span className={classNames(props.active === 1 ? 'text-gray-950 font-bold' : 'text-gray-600 font-medium', 'hidden text-sm sm:inline-flex mr-1')}>Datos de</span>
+          <span className={classNames(props.active === 1 ? 'text-gray-950 font-bold' : 'text-gray-600 font-medium', 'text-sm')}>Calificaciones</span>
+        </button>
       </ol>
     </>
   )

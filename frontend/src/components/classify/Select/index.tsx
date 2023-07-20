@@ -6,10 +6,7 @@ import { useSelectFilter } from '@hooks/useSelectFilter'
 import { SearchProps } from '@utils/classify'
 import styles from '@styles/Select.module.css'
 import { Search } from '@components/classify/Form/Search'
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
+import { classNames } from '@utils/funtions'
 
 interface Props extends SearchProps {
   defaultValue: number

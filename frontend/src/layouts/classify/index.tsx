@@ -8,36 +8,13 @@ import { MultiStep } from '@components/classify/Form/MultiStep'
 import { GradesForm } from '@components/classify/Form/GradesForm'
 import { Squares2X2Icon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
+import { classNames } from '@utils/funtions'
 
 const data = {
   title: {
     value: 'Clasificación de estudiantes',
     size: 'text-2xl',
   },
-  enrollment: {
-    title: {
-      value: 'Datos de Matriculas',
-      size: 'text-lg',
-    },
-    subtitle: {
-      value: 'Información personal de cada estudiante al momento de matricularse',
-      size: 'text-sm',
-    },
-  },
-  grades: {
-    title: {
-      value: 'Datos de Calificaciones',
-      size: 'text-lg',
-    },
-    subtitle: {
-      value: 'Datos sobre las calificciones obtenidas en una materia en específico',
-      size: 'text-sm',
-    },
-  },
-}
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
 }
 
 export function ClassifyStudentLayout(): React.JSX.Element {
@@ -45,11 +22,11 @@ export function ClassifyStudentLayout(): React.JSX.Element {
   const form = useRef(null)
 
   const onNextStepHandler = () => {
-    setActive(active + 1)
+    setActive(1)
   }
 
   const onPreviousStepHandler = () => {
-    setActive(active - 1)
+    setActive(0)
   }
 
   const onSubmitHandler = (event: React.FormEvent<HTMLButtonElement>) => {
@@ -75,7 +52,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
       <div className="mt-8">
         <Container bgColor="bg-container">
           <div className="flex flex-col lg:flex-row gap-8">
-            <MultiStep />
+            <MultiStep active={active} onNextStepHandler={onNextStepHandler} onPreviousStepHandler={onPreviousStepHandler} />
             <CardBody>
               <div className="w-full lg:ml-16">
                 <form className="mb-2" action="/" ref={form}>
