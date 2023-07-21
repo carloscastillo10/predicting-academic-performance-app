@@ -53,11 +53,13 @@ export interface FormikValidationProps {
 }
 
 export const classifyStudentSchema = Yup.object().shape({
-  identification: Yup.string().required('Ingrese la identificación del estudiante').nullable(),
-  name: Yup.string().required('Ingrese los nombres del estudiante').nullable(),
-  lastname: Yup.string().required('Ingrese los apellidos del estudiante').nullable(),
+  identification: Yup.string().required('Ingrese la identificación del estudiante'),
+  name: Yup.string().required('Ingrese los nombres del estudiante'),
+  lastname: Yup.string().required('Ingrese los apellidos del estudiante'),
   age: Yup.number().min(0, 'No puede ser menor que 0').max(100, 'No puede ser mayor que 100'),
-  subject: Yup.string().required('Debe seleccionar una materia'),
+  disabilityPercentage: Yup.number().min(0.1, 'No puede ser menor que 0.1%').max(100, 'No puede ser menor que 100%').required('Debe ingresar un porcentaje de discapacidad'),
+  disabilitiesNumber: Yup.number().min(1, 'No puede ser menor que 1').max(100, 'No puede ser menor que 100').required('Debe ingresar el número de discapacidades'),
+  // subject: Yup.string().required('Debe seleccionar una materia'),
   numberFailures: Yup.number().min(0, 'No puede ser menor que 0').required('Ingrese el número de reprobaciones'),
   aab1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
   apeb1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
@@ -82,6 +84,11 @@ export async function validateForm(form: React.RefObject<FormikProps<FormikValue
       fieldNames.forEach((field) => {
         if (Object.keys(validationErrors).includes(field)) {
           formErrors[field] = validationErrors[field]
+        }
+
+        if (!form.current?.values.disability) {
+          delete formErrors.disabilityPercentage
+          delete formErrors.disabilitiesNumber
         }
       })
       if (Object.keys(formErrors).length > 0) {

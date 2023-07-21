@@ -6,6 +6,7 @@ import { Card } from '@components/Card'
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
 import { FormikValidationProps } from '@utils/classify'
 import styles from '@styles/Checkbox.module.css'
+import { Field, FormikProps, FormikValues } from 'formik'
 
 const data = {
   title: {
@@ -20,13 +21,20 @@ const data = {
 
 interface Props extends FormikValidationProps {
   onNextStepHandler: () => void
+  form: React.RefObject<FormikProps<FormikValues>>
 }
 
 export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
   const [hasDisability, setHasDisability] = useState(false)
 
+  const setDisabilityChecked = () => {
+    if (formProps.form.current) {
+      formProps.form.current.setFieldValue('disability', !formProps.form.current.values.disability)
+    }
+  }
   const onHasDisbailityHandler = () => {
     setHasDisability(!hasDisability)
+    setDisabilityChecked()
   }
 
   return (
@@ -39,12 +47,13 @@ export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
             <fieldset>
               <div className="relative flex gap-x-3">
                 <div className="flex h-6 items-center">
-                  <input
+                  <Field
                     type="checkbox"
                     className={`${styles.checkbox} h-4 w-4 rounded border-gray-300 text-custom focus:ring-custom`}
                     id="disability"
                     name="disability"
                     onChange={onHasDisbailityHandler}
+                    checked={hasDisability}
                   />
                 </div>
                 <div className="text-sm leading-6">

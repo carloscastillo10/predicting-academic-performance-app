@@ -27,6 +27,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
 
   const onNextStepHandler = () => {
     const fieldNames = enrollmentInputs?.data?.map((field) => field.name)
+    fieldNames.push('disabilityPercentage', 'disabilitiesNumber')
     validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
       isValid ? setActive(1) : form.current?.setTouched(setNestedObjectValues(formErrors, true))
     })
@@ -37,7 +38,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
   }
 
   const sendData = () => {
-    console.log(form)
+    console.log(form.current?.values)
   }
 
   const onSubmitHandler = (event: React.FormEvent<HTMLButtonElement>) => {
@@ -77,7 +78,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
                   {({ errors, touched }) => (
                     <Form className="mb-2">
                       <div className={classNames(active === 0 ? 'flex' : 'hidden')}>
-                        <EnrollmentForm onNextStepHandler={onNextStepHandler} errors={errors} touched={touched} />
+                        <EnrollmentForm onNextStepHandler={onNextStepHandler} errors={errors} touched={touched} form={form} />
                       </div>
                       <div className={classNames(active === 1 ? 'flex' : 'hidden')}>
                         <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} errors={errors} touched={touched} />
