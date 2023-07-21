@@ -1,5 +1,6 @@
-import { getIn, FormikErrors, FormikTouched } from 'formik'
+import React from 'react'
 import * as Yup from 'yup'
+import { getIn, FormikErrors, FormikTouched, FormikProps, FormikValues } from 'formik'
 
 export interface SearchProps {
   items: {
@@ -46,6 +47,7 @@ export const studentInitialValues = {
 }
 
 export interface FormikValidationProps {
+  form?: React.RefObject<FormikProps<FormikValues>>
   errors: FormikErrors<Student>
   touched: FormikTouched<Student>
 }
@@ -69,4 +71,26 @@ export const getFormErrors = (errors: FormikErrors<Student>, touched: FormikTouc
   const containsError = getIn(errors, fieldName)
   const hasBeenTouched = Object.keys(touched ?? []).includes(fieldName)
   return containsError && hasBeenTouched
+}
+
+export async function validateForm(form: React.RefObject<FormikProps<FormikValues>>, fieldNames: string[]) {
+  let isValid: boolean = true
+  let formErrors = Object()
+  if (form.current) {
+    const validationErrors = await form.current.validateForm()
+    if (Object.keys(validationErrors).length > 0) {
+      fieldNames.forEach((field) => {
+        if (Object.keys(validationErrors).includes(field)) {
+          formErrors[field] = validationErrors[field]
+        }
+      })
+      if (Object.keys(formErrors).length > 0) {
+        isValid = false
+      }
+    }
+  }
+  return {
+    isValid,
+    formErrors,
+  }
 }

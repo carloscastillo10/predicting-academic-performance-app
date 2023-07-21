@@ -3,14 +3,15 @@ import React, { useRef, useState } from 'react'
 import { CardBody } from '@components/CardBody'
 import { CardTitle } from '@components/CardTitle'
 import { Container } from '@components/Container'
-import { Formik, Form, FormikProps } from 'formik'
-import { EnrollmentForm } from '@components/classify/Form/EnrollmentForm'
+import { Formik, Form, FormikProps, FormikValues, setNestedObjectValues } from 'formik'
+import { EnrollmentForm } from '@components/classify/Form/Enrollment'
 import { MultiStep } from '@components/classify/Form/MultiStep'
-import { GradesForm } from '@components/classify/Form/GradesForm'
+import { GradesForm } from '@components/classify/Form/Grades'
 import { Squares2X2Icon } from '@heroicons/react/20/solid'
 import { classNames } from '@utils/funtions'
+import { classifyStudentSchema, studentInitialValues, validateForm } from '@utils/classify'
 import Link from 'next/link'
-import { Student, classifyStudentSchema, studentInitialValues } from '@utils/classify'
+import { enrollmentInputs } from '@variables/forms/enrollment'
 
 const data = {
   title: {
@@ -21,10 +22,13 @@ const data = {
 
 export function ClassifyStudentLayout(): React.JSX.Element {
   const [active, setActive] = useState(0)
-  const form = useRef<FormikProps<Student>>(null)
+  const form = useRef<FormikProps<FormikValues>>(null)
 
   const onNextStepHandler = () => {
-    setActive(1)
+    const fieldNames = enrollmentInputs?.data?.map((field) => field.name)
+    validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
+      isValid ? setActive(1) : form.current?.setTouched(setNestedObjectValues(formErrors, true))
+    })
   }
 
   const onPreviousStepHandler = () => {
@@ -69,6 +73,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
                   onSubmit={(values) => {
                     console.log(values)
                   }}
+                  innerRef={form}
                 >
                   {({ errors, touched }) => (
                     <Form className="mb-2">
