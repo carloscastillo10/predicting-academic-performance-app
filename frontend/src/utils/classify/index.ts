@@ -26,13 +26,6 @@ export interface Student {
   apeb2: number | string
 }
 
-export const classifyStudentSchema = Yup.object().shape({
-  identification: Yup.string().required('Ingrese la identificación del estudiante').nullable(),
-  name: Yup.string().required('Ingrese los nombres del estudiante').nullable(),
-  lastname: Yup.string().required('Ingrese los apellidos del estudiante').nullable(),
-  age: Yup.number().min(0, 'La edad no puede ser menor que 0').max(100, 'La edad no puede ser mayor que 100'),
-})
-
 export const studentInitialValues = {
   identification: '',
   name: '',
@@ -45,12 +38,32 @@ export const studentInitialValues = {
   subject: '',
   numberFailures: '',
   aab1: '',
-  acbd1: '',
+  acdb1: '',
   apeb1: '',
   aab2: '',
+  acdb2: '',
   apeb2: '',
-  acbd2: '',
 }
+
+export interface FormikValidationProps {
+  errors: FormikErrors<Student>
+  touched: FormikTouched<Student>
+}
+
+export const classifyStudentSchema = Yup.object().shape({
+  identification: Yup.string().required('Ingrese la identificación del estudiante').nullable(),
+  name: Yup.string().required('Ingrese los nombres del estudiante').nullable(),
+  lastname: Yup.string().required('Ingrese los apellidos del estudiante').nullable(),
+  age: Yup.number().min(0, 'No puede ser menor que 0').max(100, 'No puede ser mayor que 100'),
+  subject: Yup.string().required('Debe seleccionar una materia'),
+  numberFailures: Yup.number().min(0, 'No puede ser menor que 0').required('Ingrese el número de reprobaciones'),
+  aab1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
+  acdb1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
+  apeb1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
+  aab2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
+  acdb2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
+  apeb2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
+})
 
 export const getFormErrors = (errors: FormikErrors<Student>, touched: FormikTouched<Student>, fieldName: string): boolean => {
   const containsError = getIn(errors, fieldName)

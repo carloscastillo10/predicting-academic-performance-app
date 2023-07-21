@@ -4,9 +4,9 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useSelectFilter } from '@hooks/useSelectFilter'
 import { SearchProps } from '@utils/classify'
-import styles from '@styles/Select.module.css'
 import { Search } from '@components/classify/Form/Search'
 import { classNames } from '@utils/funtions'
+import styles from '@styles/Select.module.css'
 
 interface Props extends SearchProps {
   defaultValue: number
@@ -27,6 +27,7 @@ export function SelectForm({ ...props }: Props): React.JSX.Element {
   }
 
   const [selected, setSelected] = useState(valueSelected)
+
   return (
     <>
       <Listbox value={selected} onChange={setSelected} name={props.name}>

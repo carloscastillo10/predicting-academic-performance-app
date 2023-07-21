@@ -4,8 +4,7 @@ import { enrollmentInputs } from '@variables/forms/enrollment'
 import { Input } from '@components/classify/Form'
 import { Card } from '@components/Card'
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
-import { FormikErrors, FormikTouched } from 'formik'
-import { Student } from '@utils/classify'
+import { FormikValidationProps } from '@utils/classify'
 import styles from '@styles/Checkbox.module.css'
 
 const data = {
@@ -19,10 +18,8 @@ const data = {
   },
 }
 
-interface Props {
+interface Props extends FormikValidationProps {
   onNextStepHandler: () => void
-  errors: FormikErrors<Student>
-  touched: FormikTouched<Student>
 }
 
 export function EnrollmentForm({ onNextStepHandler, errors, touched }: Props): React.JSX.Element {

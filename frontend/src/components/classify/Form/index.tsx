@@ -1,11 +1,10 @@
 import React from 'react'
-import { SelectForm } from '@components/classify/Select'
-import { InputText } from '@components/classify/Form/InputText'
-import { InputNummber } from '@components/classify/Form/InputNumber'
-import { FormikErrors, FormikTouched } from 'formik'
-import { Student } from '@utils/classify'
+import { InputText } from '@components/classify/Form/Inputs/Text'
+import { InputNummber } from '@components/classify/Form/Inputs/Number'
+import { FormikValidationProps } from '@utils/classify'
+import { InputSelect } from './Inputs/Select'
 
-interface Props {
+interface Props extends FormikValidationProps {
   size?: string
   label: string
   type: string
@@ -20,8 +19,6 @@ interface Props {
   searchable?: boolean
   min?: number
   max?: number
-  errors: FormikErrors<Student>
-  touched: FormikTouched<Student>
 }
 
 export function Input({ ...props }: Props): React.JSX.Element {
@@ -32,16 +29,7 @@ export function Input({ ...props }: Props): React.JSX.Element {
       }
 
       case 'select': {
-        return (
-          <SelectForm
-            items={props.items || []}
-            defaultValue={props.defaultValue ?? -1}
-            id={props.id}
-            name={props.name}
-            placeholder={props.placeholder ?? 'Seleccione una opción'}
-            searchable={props.searchable ?? false}
-          />
-        )
+        return <InputSelect {...props} />
       }
 
       default: {

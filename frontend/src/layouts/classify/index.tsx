@@ -24,9 +24,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
   const form = useRef<FormikProps<Student>>(null)
 
   const onNextStepHandler = () => {
-    if (form.current) {
-      setActive(1)
-    }
+    setActive(1)
   }
 
   const onPreviousStepHandler = () => {
@@ -71,7 +69,6 @@ export function ClassifyStudentLayout(): React.JSX.Element {
                   onSubmit={(values) => {
                     console.log(values)
                   }}
-                  innerRef={form}
                 >
                   {({ errors, touched }) => (
                     <Form className="mb-2">
@@ -79,7 +76,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
                         <EnrollmentForm onNextStepHandler={onNextStepHandler} errors={errors} touched={touched} />
                       </div>
                       <div className={classNames(active === 1 ? 'flex' : 'hidden')}>
-                        <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} />
+                        <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} errors={errors} touched={touched} />
                       </div>
                     </Form>
                     // <form className="mb-2" action="/" ref={form}>

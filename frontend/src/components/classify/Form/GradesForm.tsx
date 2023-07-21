@@ -3,6 +3,7 @@ import { gradesInputs } from '@variables/forms/grades'
 import { Input } from '@components/classify/Form'
 import { Card } from '@components/Card'
 import { ArrowLongLeftIcon, PaperAirplaneIcon } from '@heroicons/react/20/solid'
+import { FormikValidationProps } from '@utils/classify'
 
 const data = {
   title: {
@@ -15,17 +16,17 @@ const data = {
   },
 }
 
-interface Props {
+interface Props extends FormikValidationProps {
   onPreviousStepHandler: () => void
   // eslint-disable-next-line no-unused-vars
   onSubmitHandler: (event: React.FormEvent<HTMLButtonElement>) => void
 }
 
-export function GradesForm({ onPreviousStepHandler, onSubmitHandler }: Props): React.JSX.Element {
+export function GradesForm({ onPreviousStepHandler, onSubmitHandler, errors, touched }: Props): React.JSX.Element {
   return (
     <>
       <Card title={data.title} subtitle={data.subtitle}>
-        <div className="mt-6 grid grid-cols-6 gap-x-6 gap-y-8">{gradesInputs?.data?.map((props, index) => <Input key={index} {...props} />)}</div>
+        <div className="mt-6 grid grid-cols-6 gap-x-6 gap-y-8">{gradesInputs?.data?.map((props, index) => <Input key={index} {...props} errors={errors} touched={touched} />)}</div>
         <div className="mt-10 flex items-center justify-between flex-wrap">
           <button
             className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-200 text-gray-600 hover:bg-search hover:font-bold active:bg-search active:text-slate-300 focus-visible:bg-search"

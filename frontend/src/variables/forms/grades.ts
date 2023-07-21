@@ -79,7 +79,6 @@ export const gradesInputs = {
       name: 'numberFailures',
       placeholder: 'Ej. 0',
       min: 0,
-      max: 100,
     },
     {
       size: 'col-span-3 md:col-span-2',
