@@ -59,12 +59,12 @@ export const classifyStudentSchema = Yup.object().shape({
   age: Yup.number().min(0, 'No puede ser menor que 0').max(100, 'No puede ser mayor que 100'),
   subject: Yup.string().required('Debe seleccionar una materia'),
   numberFailures: Yup.number().min(0, 'No puede ser menor que 0').required('Ingrese el número de reprobaciones'),
-  aab1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
-  acdb1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
-  apeb1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
-  aab2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
-  acdb2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
-  apeb2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10'),
+  aab1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
+  apeb1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
+  acdb1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
+  aab2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
+  acdb2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
+  apeb2: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
 })
 
 export const getFormErrors = (errors: FormikErrors<Student>, touched: FormikTouched<Student>, fieldName: string): boolean => {

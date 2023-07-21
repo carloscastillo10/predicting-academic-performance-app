@@ -12,6 +12,7 @@ import { classNames } from '@utils/funtions'
 import { classifyStudentSchema, studentInitialValues, validateForm } from '@utils/classify'
 import Link from 'next/link'
 import { enrollmentInputs } from '@variables/forms/enrollment'
+import { gradesInputs } from '@variables/forms/grades'
 
 const data = {
   title: {
@@ -35,18 +36,16 @@ export function ClassifyStudentLayout(): React.JSX.Element {
     setActive(0)
   }
 
+  const sendData = () => {
+    console.log(form)
+  }
+
   const onSubmitHandler = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    if (form.current) {
-      form.current
-        .validateForm()
-        .then(() => {
-          console.log('no hay errores')
-        })
-        .catch((error) => {
-          console.log('errores', error)
-        })
-    }
+    const fieldNames = gradesInputs?.data?.map((field) => field.name)
+    validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
+      isValid ? sendData() : form.current?.setTouched(setNestedObjectValues(formErrors, true))
+    })
   }
 
   return (
@@ -84,14 +83,6 @@ export function ClassifyStudentLayout(): React.JSX.Element {
                         <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} errors={errors} touched={touched} />
                       </div>
                     </Form>
-                    // <form className="mb-2" action="/" ref={form}>
-                    //   <div className={classNames(active === 0 ? 'flex' : 'hidden')}>
-                    //     <EnrollmentForm onNextStepHandler={onNextStepHandler} />
-                    //   </div>
-                    //   <div className={classNames(active === 1 ? 'flex' : 'hidden')}>
-                    //     <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} />
-                    //   </div>
-                    // </form>
                   )}
                 </Formik>
               </div>

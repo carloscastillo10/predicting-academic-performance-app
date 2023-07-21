@@ -59,41 +59,35 @@ export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
 
           {hasDisability && (
             <>
-              <div className="col-span-6 md:col-span-2">
-                <label htmlFor="disabilityPercentage" className="block text-sm font-bold leading-6 text-gray-700">
-                  Porcentaje de discapacidad
-                  <span className="ml-1 text-sm text-red-500">*</span>
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="number"
-                    className="block w-full border-0 py-1.5 px-2.5 text-gray-700 caret-custom font-medium text-sm rounded-lg shadow-sm focus:outline-custom ring-1 ring-inset ring-gray-300 leading-6 placeholder:text-gray-400"
-                    id="disabilityPercentage"
-                    name="disabilityPercentage"
-                    placeholder="Ej. 50"
-                    min={1}
-                    max={100}
-                  />
-                </div>
-              </div>
-
-              <div className="col-span-6 md:col-span-2">
-                <label htmlFor="disabilitiesNumber" className="block text-sm font-bold leading-6 text-gray-700">
-                  Número de discapacidades
-                  <span className="ml-1 text-sm text-red-500">*</span>
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="number"
-                    className="block w-full border-0 py-1.5 px-2.5 text-gray-700 caret-custom font-medium text-sm rounded-lg shadow-sm focus:outline-custom ring-1 ring-inset ring-gray-300 leading-6 placeholder:text-gray-400"
-                    id="disabilitiesNumber"
-                    name="disabilitiesNumber"
-                    placeholder="Ej. 1"
-                    min={1}
-                    max={100}
-                  />
-                </div>
-              </div>
+              <Input
+                key={6}
+                size="col-span-6 md:col-span-2"
+                label="Porcentaje de discapacidad"
+                type="number"
+                required={true}
+                id="disabilityPercentage"
+                name="disabilityPercentage"
+                placeholder="Ej. 50"
+                inputText="%"
+                min={1}
+                max={100}
+                errors={formProps.errors}
+                touched={formProps.touched}
+              />
+              <Input
+                key={7}
+                size="col-span-6 md:col-span-2"
+                label="Número de discapacidades"
+                type="number"
+                required={true}
+                id="disabilitiesNumber"
+                name="disabilitiesNumber"
+                placeholder="Ej. 1"
+                min={1}
+                max={100}
+                errors={formProps.errors}
+                touched={formProps.touched}
+              />
             </>
           )}
         </div>

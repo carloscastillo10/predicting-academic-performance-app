@@ -35,6 +35,7 @@ export const enrollmentInputs = {
       id: 'age',
       name: 'age',
       placeholder: 'Ej. 23',
+      inputText: 'años',
       min: 0,
       max: 100,
     },

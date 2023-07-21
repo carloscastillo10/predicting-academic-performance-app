@@ -12,6 +12,7 @@ interface Props extends FormikValidationProps {
   id: string
   name: string
   placeholder?: string
+  inputText?: string
   items?: {
     value: string
   }[]
