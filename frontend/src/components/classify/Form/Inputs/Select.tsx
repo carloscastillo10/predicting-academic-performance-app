@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { SelectForm } from '@components/classify/Select'
-import { Field } from 'formik'
+import { useField, useFormikContext } from 'formik'
+import { FormikValidationProps } from '@utils/classify'
 
-interface Props {
+export interface Selected {
+  value: string
+}
+
+interface Props extends FormikValidationProps {
   id: string
   name: string
   placeholder?: string
@@ -16,8 +21,24 @@ interface Props {
 }
 
 export function InputSelect({ ...props }: Props): React.JSX.Element {
-  const SelectInput = () => {
-    return (
+  const name = props.name
+  const [field] = useField(name)
+  const { setFieldValue } = useFormikContext()
+
+  let valueSelected = ''
+  if (props.items !== undefined && props.defaultValue !== undefined) {
+    valueSelected = props.items[props.defaultValue]?.value || field.value
+  }
+
+  const [selected, setSelected] = useState(valueSelected)
+
+  const onChangeHandler = (itemSelected: any) => {
+    setSelected(itemSelected.value)
+    setFieldValue(name, itemSelected.value)
+  }
+
+  return (
+    <>
       <SelectForm
         items={props.items || []}
         defaultValue={props.defaultValue ?? -1}
@@ -25,13 +46,12 @@ export function InputSelect({ ...props }: Props): React.JSX.Element {
         name={props.name}
         placeholder={props.placeholder ?? 'Seleccione una opción'}
         searchable={props.searchable ?? false}
+        itemSelected={selected}
+        onChangeHandler={onChangeHandler}
+        errors={props.errors}
+        touched={props.touched}
+        form={props.form}
       />
-    )
-  }
-
-  return (
-    <>
-      <Field type="select" name={props.name} component={SelectInput} />
     </>
   )
 }

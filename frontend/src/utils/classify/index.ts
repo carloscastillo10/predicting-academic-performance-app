@@ -59,7 +59,7 @@ export const classifyStudentSchema = Yup.object().shape({
   age: Yup.number().min(0, 'No puede ser menor que 0').max(100, 'No puede ser mayor que 100'),
   disabilityPercentage: Yup.number().min(0.1, 'No puede ser menor que 0.1%').max(100, 'No puede ser menor que 100%').required('Debe ingresar un porcentaje de discapacidad'),
   disabilitiesNumber: Yup.number().min(1, 'No puede ser menor que 1').max(100, 'No puede ser menor que 100').required('Debe ingresar el número de discapacidades'),
-  // subject: Yup.string().required('Debe seleccionar una materia'),
+  subject: Yup.string().required('Debe seleccionar una materia'),
   numberFailures: Yup.number().min(0, 'No puede ser menor que 0').required('Ingrese el número de reprobaciones'),
   aab1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
   apeb1: Yup.number().min(0, 'La nota no puede ser menor que 0').max(10, 'La nota no puede ser mayor a 10').required('Debe ingresar una calificación'),
@@ -75,6 +75,17 @@ export const getFormErrors = (errors: FormikErrors<Student>, touched: FormikTouc
   return containsError && hasBeenTouched
 }
 
+export function resetDisabilityFields(form: React.RefObject<FormikProps<FormikValues>>, formErrors: any) {
+  form.current?.setFieldValue('disabilityPercentage', '')
+  // form.current?.setFieldTouched('disabilityPercentage', false, false)
+  delete formErrors.disabilityPercentage
+
+  form.current?.setFieldValue('disabilitiesNumber', '')
+  // form.current?.setFieldTouched('disabilitiesNumber', false, false)
+  delete formErrors.disabilitiesNumber
+  return formErrors
+}
+
 export async function validateForm(form: React.RefObject<FormikProps<FormikValues>>, fieldNames: string[]) {
   let isValid: boolean = true
   let formErrors = Object()
@@ -87,8 +98,7 @@ export async function validateForm(form: React.RefObject<FormikProps<FormikValue
         }
 
         if (!form.current?.values.disability) {
-          delete formErrors.disabilityPercentage
-          delete formErrors.disabilitiesNumber
+          formErrors = resetDisabilityFields(form, formErrors)
         }
       })
       if (Object.keys(formErrors).length > 0) {

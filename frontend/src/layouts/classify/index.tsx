@@ -81,7 +81,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
                         <EnrollmentForm onNextStepHandler={onNextStepHandler} errors={errors} touched={touched} form={form} />
                       </div>
                       <div className={classNames(active === 1 ? 'flex' : 'hidden')}>
-                        <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} errors={errors} touched={touched} />
+                        <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} errors={errors} touched={touched} form={form} />
                       </div>
                     </Form>
                   )}

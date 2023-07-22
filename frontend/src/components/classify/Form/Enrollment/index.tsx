@@ -4,7 +4,7 @@ import { enrollmentInputs } from '@variables/forms/enrollment'
 import { Input } from '@components/classify/Form'
 import { Card } from '@components/Card'
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
-import { FormikValidationProps } from '@utils/classify'
+import { FormikValidationProps, resetDisabilityFields } from '@utils/classify'
 import styles from '@styles/Checkbox.module.css'
 import { Field, FormikProps, FormikValues } from 'formik'
 
@@ -32,8 +32,10 @@ export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
       formProps.form.current.setFieldValue('disability', !formProps.form.current.values.disability)
     }
   }
+
   const onHasDisbailityHandler = () => {
     setHasDisability(!hasDisability)
+    hasDisability ? resetDisabilityFields(formProps.form, formProps.errors) : null
     setDisabilityChecked()
   }
 
@@ -65,7 +67,6 @@ export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
               </div>
             </fieldset>
           </div>
-
           {hasDisability && (
             <>
               <Input
