@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react'
-import { Container } from '@components/dashboard/Container'
-import { CardHeader } from '@components/dashboard/CardHeader'
-import { CardBody } from '@components/dashboard/CardBody'
-import { Card } from '@components/dashboard/Card'
+import { Container } from '@components/Container'
+import { CardHeader } from '@components/CardHeader'
+import { CardBody } from '@components/CardBody'
+import { Card } from '@components/Card'
 import { BarChar } from '@components/dashboard/charts/BarChar'
 import { barChartDataApprovedStudents, barChartOptionsApprovedStudents } from '@variables/charts/ApprovedStudents'
 import { LineAreaChart } from '@components/dashboard/charts/LineaAreaChart'
@@ -61,7 +61,7 @@ export function OverviewLayout(): React.JSX.Element {
 
   const calendarHandler = () => {
     setActive(-1)
-    console.log('desplegar calendario')
+    console.log('Desplegar calendario')
   }
 
   return (
@@ -86,7 +86,6 @@ export function OverviewLayout(): React.JSX.Element {
             </button>
           </div>
         </div>
-
         <CardBody>
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6 ">
             <Card title={data.approvedStudents.title} subtitle={data.approvedStudents.subtitle}>

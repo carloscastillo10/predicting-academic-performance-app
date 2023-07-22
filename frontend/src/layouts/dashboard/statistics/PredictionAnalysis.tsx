@@ -1,7 +1,7 @@
-import { Container } from '@components/dashboard/Container'
-import { CardHeader } from '@components/dashboard/CardHeader'
-import { CardBody } from '@components/dashboard/CardBody'
-import { Card } from '@components/dashboard/Card'
+import { Container } from '@components/Container'
+import { CardHeader } from '@components/CardHeader'
+import { CardBody } from '@components/CardBody'
+import { Card } from '@components/Card'
 import { BarChar } from '@components/dashboard/charts/BarChar'
 import { barChartDataProvinceStudents, barChartOptionsProvinceStudents } from '@variables/charts/ProvincePredictions'
 import { Legend } from '@components/dashboard/charts/Legend'
@@ -63,8 +63,8 @@ export function PredictionAnalysisLayout(): React.JSX.Element {
             <CardHeader title={headers.title} subtitle={headers.subtitle} />
           </div>
           <div className="flex flex-wrap gap-2">
-            <SelectFilter items={provinces.items} defaulValue={provinces.defaulValue} searcheable={true} />
-            <SelectFilter items={years.items} defaulValue={years.defaulValue} />
+            <SelectFilter items={provinces.items} defaultValue={provinces.defaultValue} searchable={true} />
+            <SelectFilter items={years.items} defaultValue={years.defaultValue} />
           </div>
         </div>
         <CardBody>

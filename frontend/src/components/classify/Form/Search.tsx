@@ -13,10 +13,10 @@ export function Search({ searchValue, setSearchValue }: Props): React.JSX.Elemen
 
   return (
     <>
-      <div className="grid">
+      <div className="grid pr-2.5">
         <input
           type="text"
-          className="mt-2 bg-search text-gray-600 caret-custom block mx-1 px-3 py-1 mb-2 font-medium text-sm rounded-lg focus:outline-container h-[35px] md:w-[189px] lg:w-[202px]"
+          className="mt-2 bg-search text-gray-700 caret-custom block mx-1 px-3 py-1 mb-2 font-medium text-sm rounded-lg focus:outline-container w-full h-[35px]"
           value={searchValue}
           onChange={onSearchValueChangeHandler}
           onKeyDown={onKeyDownHandler}
