@@ -31,7 +31,7 @@ export function GradesForm({ ...formProps }: Props): React.JSX.Element {
         </div>
         <div className="mt-10 flex items-center justify-between flex-wrap">
           <button
-            className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-200 text-gray-600 hover:bg-search hover:font-bold active:bg-search active:text-slate-300 focus-visible:bg-search"
+            className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-200 text-gray-600 hover:bg-gray-300 hover:font-bold active:bg-search active:text-slate-300 focus-visible:bg-search"
             type="button"
             onClick={formProps.onPreviousStepHandler}
           >
