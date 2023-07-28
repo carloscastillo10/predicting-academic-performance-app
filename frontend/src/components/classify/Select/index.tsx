@@ -15,7 +15,7 @@ interface Props extends SearchProps, FormikValidationProps {
   placeholder: string
   itemSelected: string
   // eslint-disable-next-line no-unused-vars
-  onChangeHandler: (value: string) => void
+  handleChange: (value: string) => void
 }
 
 export function SelectForm({ ...props }: Props): React.JSX.Element {
@@ -26,7 +26,7 @@ export function SelectForm({ ...props }: Props): React.JSX.Element {
   const items = searchedItems
   return (
     <>
-      <Listbox value={props.itemSelected} onChange={props.onChangeHandler} name={props.name}>
+      <Listbox value={props.itemSelected} onChange={props.handleChange} name={props.name}>
         {({ open }) => (
           <div className="relative mt-2">
             <Listbox.Button

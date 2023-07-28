@@ -17,9 +17,9 @@ const data = {
 }
 
 interface Props extends FormikValidationProps {
-  onPreviousStepHandler: () => void
+  handlePreviousStep: () => void
   // eslint-disable-next-line no-unused-vars
-  onSubmitHandler: (event: React.FormEvent<HTMLButtonElement>) => void
+  handleSubmit: (event: React.FormEvent<HTMLButtonElement>) => void
 }
 
 export function GradesForm({ ...formProps }: Props): React.JSX.Element {
@@ -33,7 +33,7 @@ export function GradesForm({ ...formProps }: Props): React.JSX.Element {
           <button
             className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-200 text-gray-600 hover:bg-gray-300 hover:font-bold active:bg-search active:text-slate-300 focus-visible:bg-search"
             type="button"
-            onClick={formProps.onPreviousStepHandler}
+            onClick={formProps.handlePreviousStep}
           >
             <ArrowLongLeftIcon className="fill-gray-600 group-active:fill-current w-5 h-6" />
             <span className="flex ml-2">Anterior</span>
@@ -41,7 +41,7 @@ export function GradesForm({ ...formProps }: Props): React.JSX.Element {
           <button
             className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-custom text-white hover:bg-hover-custom hover:font-bold active:bg-hover-custom active:text-slate-300 focus-visible:bg-hover-custom"
             type="button"
-            onClick={formProps.onSubmitHandler}
+            onClick={formProps.handleSubmit}
           >
             <span className="flex mr-2">Clasificar</span>
             <PaperAirplaneIcon className="fill-white group-active:fill-current w-5 h-6" />

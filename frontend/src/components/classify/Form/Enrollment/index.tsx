@@ -20,7 +20,7 @@ const data = {
 }
 
 interface Props extends FormikValidationProps {
-  onNextStepHandler: () => void
+  handleNextStep: () => void
   form: React.RefObject<FormikProps<FormikValues>>
 }
 
@@ -33,7 +33,7 @@ export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
     }
   }
 
-  const onHasDisbailityHandler = () => {
+  const handleHasDisability = () => {
     setHasDisability(!hasDisability)
     hasDisability ? resetDisabilityFields(formProps.form, formProps.errors) : null
     setDisabilityChecked()
@@ -54,7 +54,7 @@ export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
                     className={`${styles.checkbox} h-4 w-4 rounded border-gray-300 text-custom focus:ring-custom`}
                     id="disability"
                     name="disability"
-                    onChange={onHasDisbailityHandler}
+                    onChange={handleHasDisability}
                     checked={hasDisability}
                   />
                 </div>
@@ -105,7 +105,7 @@ export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
           <button
             className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-custom text-white hover:bg-hover-custom hover:font-bold active:bg-hover-custom active:text-slate-300 focus-visible:bg-hover-custom"
             type="button"
-            onClick={formProps.onNextStepHandler}
+            onClick={formProps.handleNextStep}
           >
             <span className="flex mr-2">Siguiente</span>
             <ArrowLongRightIcon className="fill-white group-active:fill-current w-5 h-6" />

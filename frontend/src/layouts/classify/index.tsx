@@ -28,7 +28,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
   const [openModal, setOpenModal] = useState(false)
   const form = useRef<FormikProps<FormikValues>>(null)
 
-  const onNextStepHandler = () => {
+  const handleNextStep = () => {
     // const fieldNames = enrollmentInputs?.data?.map((field) => field.name)
     // fieldNames.push('disabilityPercentage', 'disabilitiesNumber')
     // validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
@@ -37,7 +37,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
     setActive(1)
   }
 
-  const onPreviousStepHandler = () => {
+  const handlePreviousStep = () => {
     setActive(0)
   }
 
@@ -45,7 +45,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
     console.log(form.current?.values)
   }
 
-  const onSubmitHandler = (event: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
     // const fieldNames = gradesInputs?.data?.map((field) => field.name)
     // validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
@@ -70,17 +70,17 @@ export function ClassifyStudentLayout(): React.JSX.Element {
       <div className="mt-8">
         <Container bgColor="bg-container">
           <div className="flex flex-col lg:flex-row gap-8">
-            <MultiStep active={active} onNextStepHandler={onNextStepHandler} onPreviousStepHandler={onPreviousStepHandler} />
+            <MultiStep active={active} handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />
             <CardBody>
               <div className="w-full lg:ml-16">
                 <Formik initialValues={studentInitialValues} validationSchema={classifyStudentSchema} onSubmit={() => {}} innerRef={form}>
                   {({ errors, touched }) => (
                     <Form className="mb-2">
                       <div className={classNames(active === 0 ? 'flex' : 'hidden')}>
-                        <EnrollmentForm onNextStepHandler={onNextStepHandler} errors={errors} touched={touched} form={form} />
+                        <EnrollmentForm handleNextStep={handleNextStep} errors={errors} touched={touched} form={form} />
                       </div>
                       <div className={classNames(active === 1 ? 'flex' : 'hidden')}>
-                        <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} errors={errors} touched={touched} form={form} />
+                        <GradesForm handlePreviousStep={handlePreviousStep} handleSubmit={handleSubmit} errors={errors} touched={touched} form={form} />
                       </div>
                     </Form>
                   )}

@@ -11,7 +11,7 @@ interface Props {
 export function Modal({ open, setOpen, children }: Props): React.JSX.Element {
   const closeButtonRef = useRef(null)
 
-  const closeModalHandler = () => {
+  const handleCloseModal = () => {
     setOpen(false)
   }
 
@@ -34,7 +34,7 @@ export function Modal({ open, setOpen, children }: Props): React.JSX.Element {
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all my-8 w-full max-w-lg">
                 <div className="bg-white px-4 py-4 pb-4 pt-5 lg:px-6 lg:py-6">
-                  <XMarkIcon className="block absolute right-0 mr-4 h-6 w-6 text-gray-400 cursor-pointer text-end hover:text-gray-600" onClick={closeModalHandler} />
+                  <XMarkIcon className="block absolute right-0 mr-4 h-6 w-6 text-gray-400 cursor-pointer text-end hover:text-gray-600" onClick={handleCloseModal} />
                   {children}
                 </div>
               </Dialog.Panel>

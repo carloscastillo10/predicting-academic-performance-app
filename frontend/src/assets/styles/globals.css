@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --custom-color: #003f72
+}
+
 button {
   transition: ease-in-out .3s;
 }
