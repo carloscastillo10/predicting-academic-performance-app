@@ -10,9 +10,11 @@ import { GradesForm } from '@components/classify/Form/Grades'
 import { Squares2X2Icon } from '@heroicons/react/20/solid'
 import { classNames } from '@utils/funtions'
 import { classifyStudentSchema, studentInitialValues, validateForm } from '@utils/classify'
-import Link from 'next/link'
 import { enrollmentInputs } from '@variables/forms/enrollment'
 import { gradesInputs } from '@variables/forms/grades'
+import Link from 'next/link'
+import { Modal } from '@common/Modal'
+import { ClassifiedStudentLayout } from './classifiedStudent'
 
 const data = {
   title: {
@@ -23,17 +25,19 @@ const data = {
 
 export function ClassifyStudentLayout(): React.JSX.Element {
   const [active, setActive] = useState(0)
+  const [openModal, setOpenModal] = useState(false)
   const form = useRef<FormikProps<FormikValues>>(null)
 
-  const onNextStepHandler = () => {
-    const fieldNames = enrollmentInputs?.data?.map((field) => field.name)
-    fieldNames.push('disabilityPercentage', 'disabilitiesNumber')
-    validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
-      isValid ? setActive(1) : form.current?.setTouched(setNestedObjectValues(formErrors, true))
-    })
+  const handleNextStep = () => {
+    // const fieldNames = enrollmentInputs?.data?.map((field) => field.name)
+    // fieldNames.push('disabilityPercentage', 'disabilitiesNumber')
+    // validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
+    //   isValid ? setActive(1) : form.current?.setTouched(setNestedObjectValues(formErrors, true))
+    // })
+    setActive(1)
   }
 
-  const onPreviousStepHandler = () => {
+  const handlePreviousStep = () => {
     setActive(0)
   }
 
@@ -41,12 +45,14 @@ export function ClassifyStudentLayout(): React.JSX.Element {
     console.log(form.current?.values)
   }
 
-  const onSubmitHandler = (event: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault()
-    const fieldNames = gradesInputs?.data?.map((field) => field.name)
-    validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
-      isValid ? sendData() : form.current?.setTouched(setNestedObjectValues(formErrors, true))
-    })
+    // const fieldNames = gradesInputs?.data?.map((field) => field.name)
+    // validateForm(form, fieldNames).then(({ isValid, formErrors }) => {
+    //   isValid ? sendData() : form.current?.setTouched(setNestedObjectValues(formErrors, true))
+    // })
+    sendData()
+    setOpenModal(true)
   }
 
   return (
@@ -64,24 +70,17 @@ export function ClassifyStudentLayout(): React.JSX.Element {
       <div className="mt-8">
         <Container bgColor="bg-container">
           <div className="flex flex-col lg:flex-row gap-8">
-            <MultiStep active={active} onNextStepHandler={onNextStepHandler} onPreviousStepHandler={onPreviousStepHandler} />
+            <MultiStep active={active} handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />
             <CardBody>
               <div className="w-full lg:ml-16">
-                <Formik
-                  initialValues={studentInitialValues}
-                  validationSchema={classifyStudentSchema}
-                  onSubmit={(values) => {
-                    console.log(values)
-                  }}
-                  innerRef={form}
-                >
+                <Formik initialValues={studentInitialValues} validationSchema={classifyStudentSchema} onSubmit={() => {}} innerRef={form}>
                   {({ errors, touched }) => (
                     <Form className="mb-2">
                       <div className={classNames(active === 0 ? 'flex' : 'hidden')}>
-                        <EnrollmentForm onNextStepHandler={onNextStepHandler} errors={errors} touched={touched} form={form} />
+                        <EnrollmentForm handleNextStep={handleNextStep} errors={errors} touched={touched} form={form} />
                       </div>
                       <div className={classNames(active === 1 ? 'flex' : 'hidden')}>
-                        <GradesForm onPreviousStepHandler={onPreviousStepHandler} onSubmitHandler={onSubmitHandler} errors={errors} touched={touched} form={form} />
+                        <GradesForm handlePreviousStep={handlePreviousStep} handleSubmit={handleSubmit} errors={errors} touched={touched} form={form} />
                       </div>
                     </Form>
                   )}
@@ -91,6 +90,9 @@ export function ClassifyStudentLayout(): React.JSX.Element {
           </div>
         </Container>
       </div>
+      <Modal open={openModal} setOpen={setOpenModal}>
+        <ClassifiedStudentLayout setOpenModal={setOpenModal} />
+      </Modal>
     </>
   )
 }

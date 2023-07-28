@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function SideBar({ navigation, mobileMenuOpen, setMobileMenuOpen }: Props): React.JSX.Element {
-  const mobileMenuHandler = (): void => {
+  const handleMobileMenu = (): void => {
     setMobileMenuOpen(false)
   }
 
@@ -28,7 +28,7 @@ export function SideBar({ navigation, mobileMenuOpen, setMobileMenuOpen }: Props
               <span className="sr-only">Your Company</span>
               <Image className="h-8 w-auto" src="logo.svg" width={50} height={50} alt="TailWind Logo" />
             </Link>
-            <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={mobileMenuHandler}>
+            <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={handleMobileMenu}>
               <span className="sr-only">Close menu</span>
               <XMarkIcon className="h-6 w-6 text-gray-100" aria-hidden="true" />
             </button>

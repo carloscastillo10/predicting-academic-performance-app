@@ -4,7 +4,7 @@ export function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export function onKeyDownHandler(event: React.KeyboardEvent<HTMLInputElement>) {
+export function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
   const allowedHeadlessUIKeys = [
     'ArrowUp',
     'ArrowDown',

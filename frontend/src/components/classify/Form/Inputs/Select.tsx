@@ -32,7 +32,7 @@ export function InputSelect({ ...props }: Props): React.JSX.Element {
 
   const [selected, setSelected] = useState(valueSelected)
 
-  const onChangeHandler = (itemSelected: any) => {
+  const handleChange = (itemSelected: any) => {
     setSelected(itemSelected.value)
     setFieldValue(name, itemSelected.value)
   }
@@ -47,7 +47,7 @@ export function InputSelect({ ...props }: Props): React.JSX.Element {
         placeholder={props.placeholder ?? 'Seleccione una opción'}
         searchable={props.searchable ?? false}
         itemSelected={selected}
-        onChangeHandler={onChangeHandler}
+        handleChange={handleChange}
         errors={props.errors}
         touched={props.touched}
         form={props.form}
