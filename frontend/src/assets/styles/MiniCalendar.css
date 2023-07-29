@@ -145,3 +145,7 @@ abbr[title] {
   background-color: #e8ebf1 !important;
   border-radius: 10px;
 }
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #e8ebf1 !important;
+}
