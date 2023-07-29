@@ -1,6 +1,6 @@
-export const years = {
-  items: [{ value: '2023' }, { value: '2022' }, { value: '2021' }, { value: '2020' }],
-  defaultValue: 0,
+export const academicPeriods = {
+  items: [{ value: 'Abr 2021 / Ago 2021' }, { value: 'Oct 2021 / Feb 2022' }, { value: 'Abr 2022 / Ago 2022' }, { value: 'Oct 2022 / Feb 2023' }, { value: 'Abr 2023 / Ago 2023' }],
+  defaultValue: 4,
 }
 
 export const provinces = {
