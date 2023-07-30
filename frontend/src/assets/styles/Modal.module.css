@@ -1,6 +1,6 @@
 .content > * {
   animation-name: fadeSlideIn;
-  animation-duration: 0.8s;
+  animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   opacity: 0;
@@ -9,7 +9,7 @@
 @keyframes fadeSlideIn {
   from {
       opacity: 0;
-      transform: translateY(33%);
+      transform: translateY(10%);
   }
 
   to {
@@ -25,8 +25,8 @@
 .icon circle,
 .icon polyline,
 .icon line {
-  animation: icon-loader 0.5s ease-in-out forwards;
-  transition: stroke 0.3s;
+  animation: icon-loader 1s ease-in-out forwards;
+  transition: stroke 0.6s;
 }
 
 .circle {

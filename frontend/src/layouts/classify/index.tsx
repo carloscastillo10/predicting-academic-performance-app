@@ -62,6 +62,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
         <Link
           href="/"
           className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-custom text-white hover:bg-hover-custom hover:text-slate-100 active:bg-hover-custom active:text-slate-300 focus-visible:bg-hover-custom"
+          title="Dashboard"
         >
           <Squares2X2Icon className="fill-white group-active:fill-current w-5 h-5" />
           <span className="flex ml-3">Dashboard</span>
