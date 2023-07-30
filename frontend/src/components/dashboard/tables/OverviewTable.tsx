@@ -38,6 +38,7 @@ export function OverViewTable(): React.JSX.Element {
                   </div>
                 </td>
                 <td className="text-gray-900 font-semibold pt-2 pb-2 pe-5">{student.subject}</td>
+                <td className="text-gray-900 font-semibold pt-2 pb-2 pe-5">{student.academicPeriod}</td>
                 <td className="pt-2 pb-2 pe-5">
                   <div className="flex flex-row items-center">
                     {student.status.toLowerCase() === 'aprobada' ? (
