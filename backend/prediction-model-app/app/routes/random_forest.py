@@ -1,9 +1,10 @@
 from . import blueprint
-from flask import jsonify
+from flask import jsonify, request
 
 
-@blueprint.route('/predict', methods=['GET'])
+@blueprint.route('/predict', methods=['POST'])
 def predict():
+    print(request.json)
     response = {
         'status': 'aprobado',
         'rules': [
