@@ -1,9 +1,13 @@
 import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min, isNumber } from 'class-validator'
 import { Student } from '@api/students/models/student.model'
 
-interface InterfaceClassifyStudentDto extends Omit<Student, 'id' | 'createdAt' | 'updateAt' | 'statusPredicted' | 'rules'> {}
+interface StudentDto extends Omit<Student, 'id' | 'createdAt' | 'updateAt'> {}
 
-export class ClassifyStudentDto implements InterfaceClassifyStudentDto {
+export interface CreateStudent extends Partial<StudentDto> {}
+
+export interface ClassifyStudent extends Omit<Student, 'id' | 'createdAt' | 'updateAt' | 'statusPredicted' | 'rules'> {}
+
+export class ClassifyStudentDto implements ClassifyStudent {
   @IsString()
   @IsNotEmpty()
   identification!: string
@@ -19,14 +23,14 @@ export class ClassifyStudentDto implements InterfaceClassifyStudentDto {
   @IsNumber()
   age!: number
 
-  @IsString()
-  sex!: string
+  @IsNumber()
+  sex!: number
 
-  @IsString()
-  province!: string
+  @IsNumber()
+  province!: number
 
-  @IsString()
-  canton!: string
+  @IsNumber()
+  canton!: number
 
   @IsBoolean()
   disability!: boolean
@@ -40,11 +44,11 @@ export class ClassifyStudentDto implements InterfaceClassifyStudentDto {
   @IsNumber()
   disabilitiesNumber!: number
 
-  @IsString()
-  subject!: string
+  @IsNumber()
+  subject!: number
 
-  @IsString()
-  academicPeriod!: string
+  @IsNumber()
+  academicPeriod!: number
 
   @Min(0)
   @IsNumber()

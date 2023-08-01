@@ -1,13 +1,24 @@
-import { ValidationError, validateOrReject } from 'class-validator'
-import { ClassifyStudentDto } from '../models/student.dto'
-import { BaseStudentService } from '../models/baseStudentService.model'
-import { badRequest } from '@hapi/boom'
-import { plainToClass } from 'class-transformer'
+import { ClassifyStudentDto, CreateStudent } from '@api/students/dtos/classifyStudent.dto'
+import { BaseStudentService } from 'api/students/models/baseStudentService.model'
+// import { badRequest } from '@hapi/boom'
+// import { plainToClass } from 'class-transformer'
+import { PredictStudentDto } from '@api/students/dtos/predictStudent.dto'
+import { config } from '@config/config'
+import axios from 'axios'
 
-export class StudentService {
-  async create(data: ClassifyStudentDto) {
+export class StudentService implements BaseStudentService {
+  async create(studentData: ClassifyStudentDto) {
     try {
-      const classifyStudentData = plainToClass(ClassifyStudentDto, data)
+      // const classifyStudentData = plainToClass(ClassifyStudentDto, studentData)
+      const { age, sex, province, canton, numberFailures, aab1, acdb1, apeb1, aab2, acdb2, apeb2 } = studentData
+      const payload: PredictStudentDto = { age, sex, province, canton, numberFailures, aab1, acdb1, apeb1, aab2, acdb2, apeb2 }
+      const response = await axios.post(`${config.predictModelUrl}/predict`, payload)
+      const { data } = response.data
+      const createStudentData: CreateStudent = studentData
+      createStudentData.statusPredicted = data.statusPredicted
+      createStudentData.rules = data.rules
+
+      return createStudentData
 
       // await validateOrReject(classifyStudentData)
     } catch (errors) {

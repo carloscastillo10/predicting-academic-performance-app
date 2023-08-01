@@ -1,5 +1,5 @@
 import express, { Express, Router } from 'express'
-import { config } from '../config'
+import { config } from '@config/config'
 import studentRouter from '@api/students/routes/student.router'
 import bodyParser from 'body-parser'
 
