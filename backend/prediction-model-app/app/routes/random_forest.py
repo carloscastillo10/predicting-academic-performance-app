@@ -1,17 +1,14 @@
 from . import blueprint
-from flask import jsonify
+from app.services.random_forest import RandomForestService
+from flask import jsonify, request
 
 
-@blueprint.route('/predict', methods=['GET'])
+@blueprint.route('/predict', methods=['POST'])
 def predict():
-    response = {
-        'status': 'aprobado',
-        'rules': [
-            {
-                'name': 'apeb2_ponderado <= 30.2',
-                'output': True,
-                'value': 20.2
-            }
-        ]
-    }
-    return jsonify(response), 201
+    try:
+
+        random_forest_service = RandomForestService(request.json)
+        response = random_forest_service.predict()
+        return jsonify(response), 201
+    except Exception as e:
+        return jsonify({"message": e.__str__(), "statusCode": 400}), 400

@@ -1,16 +1,16 @@
 import { Router, Request, Response, NextFunction } from 'express'
 import { StudentService } from '@api/students/services/student.service'
-import { ClassifyStudentDto } from '../models/student.dto'
 
 const router: Router = Router()
 const service: StudentService = new StudentService()
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await service.create(req.body)
+    const studentData = await service.create(req.body)
     res.status(201).json({
       message: 'Created',
       statusCode: 201,
+      data: studentData,
     })
   } catch (error) {
     next(error)

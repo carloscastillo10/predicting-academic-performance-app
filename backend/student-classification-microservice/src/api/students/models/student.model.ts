@@ -5,14 +5,14 @@ export interface Student extends BaseModel {
   name: string
   lastname: string
   age: number
-  sex: string
-  province: string
-  canton: string
+  sex: number
+  province: number
+  canton: number
   disability: boolean
   disabilityPercentage: number
   disabilitiesNumber: number
-  subject: string
-  academicPeriod: string
+  subject: number
+  academicPeriod: number
   numberFailures: number
   aab1: number
   acdb1: number
@@ -20,8 +20,8 @@ export interface Student extends BaseModel {
   aab2: number
   acdb2: number
   apeb2: number
-  statusPredicted: string
-  rules: {
+  statusPredicted?: string
+  rules?: {
     name: string
     output: boolean
     value: string
