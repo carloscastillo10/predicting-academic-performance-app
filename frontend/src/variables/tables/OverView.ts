@@ -20,9 +20,9 @@ export const overViewTableheaders = [
 
 export const overViewStudents = [
   {
-    name: 'Carlos Castillo',
+    name: 'Cxxxxx Cxxxxxxxx',
     image: 'https://ui-avatars.com/api/?name=Carlos+Castillo&background=003f72&color=fff',
-    identification: '1104999111',
+    identification: '11XXXXXX11',
     date: '14 Jul 2023',
     time: '16:20',
     subject: 'Procesos de Ingeniera de Software',
@@ -42,9 +42,9 @@ export const overViewStudents = [
     apeb2: 5,
   },
   {
-    name: 'Luisa Diaz',
+    name: 'Lxxxxx Dxxx',
     image: 'https://ui-avatars.com/api/?name=Luis+Diaz&background=003f72&color=fff',
-    identification: '1104999222',
+    identification: '11XXXXXX22',
     date: '13 Jul 2023',
     time: '14:10',
     subject: 'Ingeniería Web',
@@ -64,9 +64,9 @@ export const overViewStudents = [
     apeb2: 0,
   },
   {
-    name: 'Thalia Mijas',
+    name: 'Txxxxx Mxxxx',
     image: 'https://ui-avatars.com/api/?name=Thalia+Mijas&background=003f72&color=fff',
-    identification: '1104999222',
+    identification: '11XXXXXX22',
     date: '12 Jul 2023',
     time: '11:09',
     subject: 'Programación Avanzada',
@@ -86,9 +86,9 @@ export const overViewStudents = [
     apeb2: 0,
   },
   {
-    name: 'Fernando Álvarez',
+    name: 'Fxxxxxxx Áxxxxxx',
     image: 'https://ui-avatars.com/api/?name=Fernando+Alvarez&background=003f72&color=fff',
-    identification: '1104999111',
+    identification: '11XXXXXX11',
     date: '11 Jul 2023',
     time: '16:20',
     subject: 'Sistemas Basados en Conocimiento',
@@ -108,9 +108,9 @@ export const overViewStudents = [
     apeb2: 5,
   },
   {
-    name: 'Karen Castillo',
+    name: 'Kxxxxxx Cxxxxxxxx',
     image: 'https://ui-avatars.com/api/?name=Karen+Castillo&background=003f72&color=fff',
-    identification: '1104999222',
+    identification: '11XXXXXX22',
     date: '11 Jul 2023',
     time: '09:43',
     subject: 'Lógica de la Programación',
