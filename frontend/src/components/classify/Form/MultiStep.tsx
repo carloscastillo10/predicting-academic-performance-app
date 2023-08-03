@@ -15,7 +15,7 @@ export function MultiStep({ ...props }: Props): React.JSX.Element {
     <>
       <ol className="flex flex-row justify-between items-center w-full pr-1 md:justify-around lg:flex-col lg:items-start lg:justify-start lg:gap-y-20 lg:w-auto lg:min-w-[250px] lg:relative lg:pr-0 ">
         <button
-          className={classNames(props.active === 1 ? 'bg-custom' : 'bg-gray-300', `${styles.multistep__btn} hidden lg:flex absolute left-[18.5px] h-[160px] w-[3px] z-10 cursor-pointer`)}
+          className={classNames(props.active === 1 ? 'bg-custom' : 'bg-gray-300', `${styles.multistep__btn} hidden lg:flex absolute left-[18.5px] h-[160px] w-0.5 z-10 cursor-pointer`)}
           onClick={props.handleNextStep}
         ></button>
         <button className="flex items-center text-white cursor-pointer z-20" onClick={props.handlePreviousStep}>
