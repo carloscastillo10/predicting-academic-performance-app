@@ -1,4 +1,4 @@
-import { BaseModel } from '../../utils/base.model'
+import { BaseModel } from '@utils/base.model'
 
 export interface Student extends BaseModel {
   identification: string
