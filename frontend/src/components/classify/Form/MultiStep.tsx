@@ -38,8 +38,8 @@ export function MultiStep({ ...props }: Props): React.JSX.Element {
           >
             <ClipboardDocumentCheckIcon className={classNames(props.active === 1 ? 'fill-custom text-white' : 'fill-white', 'w-5 h-5')} />
           </span>
-          <span className={classNames(props.active === 1 ? 'text-gray-950 font-bold' : 'text-gray-600 font-medium', 'hidden text-sm sm:inline-flex mr-1')}>Datos de</span>
-          <span className={classNames(props.active === 1 ? 'text-gray-950 font-bold' : 'text-gray-600 font-medium', 'text-sm')}>Calificaciones</span>
+          <span className={classNames(props.active === 1 ? 'text-gray-950 font-bold' : 'text-gray-600 font-medium', 'hidden text-sm sm:inline-flex mr-1')}>Datos</span>
+          <span className={classNames(props.active === 1 ? 'text-gray-950 font-bold' : 'text-gray-600 font-medium', 'text-sm')}>Académicos</span>
         </button>
       </ol>
     </>

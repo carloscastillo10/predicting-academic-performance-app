@@ -7,11 +7,11 @@ import { FormikValidationProps } from '@utils/classify'
 
 const data = {
   title: {
-    value: 'Datos de Calificaciones',
+    value: 'Datos Académicos',
     size: 'text-lg',
   },
   subtitle: {
-    value: 'Datos sobre las calificciones obtenidas en una materia en específico',
+    value: 'Datos sobre las calificaciones obtenidas en una materia en específico',
     size: 'text-sm',
   },
 }
