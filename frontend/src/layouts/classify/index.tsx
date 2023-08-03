@@ -61,11 +61,10 @@ export function ClassifyStudentLayout(): React.JSX.Element {
         <CardTitle title={data.title} />
         <Link
           href="/"
-          className="relative group inline-flex justify-center items-center rounded-2xl py-2 px-4 text-sm font-semibold w-auto m-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-custom text-white hover:bg-hover-custom hover:text-slate-100 active:bg-hover-custom active:text-slate-300 focus-visible:bg-hover-custom"
-          title="Dashboard"
+          className="fixed z-50 bottom-[1.875rem] m-auto inset-x-0 w-14 h-14 group inline-flex justify-center items-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-custom text-white hover:bg-hover-custom hover:text-slate-100 active:bg-hover-custom active:text-slate-300 focus-visible:bg-hover-custom md:relative md:rounded-2xl md:w-auto md:h-10 md:bottom-0 md:m-0"
         >
-          <Squares2X2Icon className="fill-white group-active:fill-current w-5 h-5" />
-          <span className="flex ml-3">Dashboard</span>
+          <Squares2X2Icon className="w-7 h-7 flex-none fill-white group-active:fill-current md:w-5 md:h-5" />
+          <span className="hidden ml-3 md:flex">Dashboard</span>
         </Link>
       </div>
       <div className="mt-8">
