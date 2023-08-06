@@ -14,9 +14,7 @@ export class StudentService implements BaseStudentService {
       const payload: PredictStudentDto = { age, sex, province, canton, numberFailures, aab1, acdb1, apeb1, aab2, acdb2, apeb2 }
       const response = await axios.post(`${config.predictModelUrl}/predict`, payload)
       const { data } = response.data
-      const createStudentData: CreateStudent = studentData
-      createStudentData.statusPredicted = data.statusPredicted
-      createStudentData.rules = data.rules
+      const createStudentData: CreateStudent = { ...studentData, ...data }
 
       return createStudentData
 
