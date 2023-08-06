@@ -11,4 +11,3 @@ def predict():
         return jsonify(response), 201
     except Exception as e:
         return jsonify({"message": e.__str__(), "statusCode": 400}), 400
-        

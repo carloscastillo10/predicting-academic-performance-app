@@ -112,7 +112,7 @@ class RandomForestService:
 
         return rules
 
-    def __get_dicision_rules(self, feature_names, model, independent_variables):
+    def __get_decision_rules(self, feature_names, model, independent_variables):
         explain = self.__set_explainer(model, independent_variables)
         selected_feature_indexes = tuple(feature[0] for feature in explain.as_map()[1])
         selected_features = list(map(feature_names.__getitem__, selected_feature_indexes))
@@ -120,20 +120,29 @@ class RandomForestService:
 
         return rules
 
+    @staticmethod
+    def __get_auxiliary_variables(independent_variables):
+        auxiliary_variables = independent_variables[[
+            'aab1_ponderado', 'acdb1_ponderado', 'apeb1_ponderado',
+            'aab2_ponderado', 'acdb2_ponderado', 'apeb2_ponderado'
+        ]].replace(-1, '')
+
+        auxiliary_variables.columns = [
+            column.replace('_ponderado', 'Weighted')
+            for column in auxiliary_variables.columns
+        ]
+        return auxiliary_variables.to_dict('records')[0]
+
     def predict(self):
         model = self.__load_model()
         feature_names = model.feature_names_in_
         independent_variables = self.__get_independent_variables()[feature_names]
         class_predicted = model.predict(independent_variables)[0]
         status = self.__classes[str(class_predicted)]
-        rules = self.__get_dicision_rules(feature_names, model, independent_variables)
-        response = {
-            'message': 'classified',
-            'statusCode': 201,
-            'data': {
-                'statusPredicted': status,
-                'rules': rules
-            }
-        }
+        rules = self.__get_decision_rules(feature_names, model, independent_variables)
+        auxiliary_variables = self.__get_auxiliary_variables(independent_variables)
+        response = {'message': 'classified', 'statusCode': 201, 'data': auxiliary_variables}
+        response['data']['statusPredicted'] = status
+        response['data']['rules'] = rules
 
         return response
