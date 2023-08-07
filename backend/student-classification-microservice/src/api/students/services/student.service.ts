@@ -1,18 +1,18 @@
+import { Document, FlattenMaps, Types } from 'mongoose'
+import { config } from '@config/config'
 import { ClassifyStudentDto, CreateStudent } from '@api/students/dtos/classifyStudent.dto'
 import { BaseStudentService } from 'api/students/models/baseStudentService.model'
 // import { badRequest } from '@hapi/boom'
 // import { plainToClass } from 'class-transformer'
 import { PredictStudentDto } from '@api/students/dtos/predictStudent.dto'
-import { config } from '@config/config'
 import { connectDB } from '@db/connection'
 import { Student, StudentModel } from '@api/students/models/student.model'
 import { Province, ProvinceModel } from '@api/provinces/models/province.model'
-import { Document, FlattenMaps, Types } from 'mongoose'
+import { Canton } from '@api/provinces/models/canton.model'
 import { Sex, SexModel } from '@api/sexs/models/sex.model'
 import { Subject, SubjectModel } from '@api/subjects/models/subject.model'
 import { Period, PeriodModel } from '@api/periods/models/period.model'
 import axios from 'axios'
-import { Canton } from '../models/canton.model'
 
 export class StudentService implements BaseStudentService {
   _db = connectDB()
