@@ -1,7 +1,7 @@
 import { studentSchema } from '@db/schemas/student.schema'
 import { BaseModel } from '@utils/base.model'
 import { model } from 'mongoose'
-import { Province } from '@api/students/models/province.model'
+import { Province } from '@api/provinces/models/province.model'
 import { Canton } from '@api/students/models/canton.model'
 import { Sex } from '@api/sexs/models/sex.model'
 import { Subject } from '@api/students/models/subject.model'
