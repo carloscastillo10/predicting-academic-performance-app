@@ -15,6 +15,7 @@ module.exports = {
       'module-resolver',
       {
         alias: {
+          '@db': './src/db',
           '@api': './src/api',
           '@config': './src/config',
           '@utils': './src/utils',

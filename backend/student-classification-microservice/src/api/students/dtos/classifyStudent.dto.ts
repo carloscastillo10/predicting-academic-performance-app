@@ -5,7 +5,32 @@ interface StudentDto extends Omit<Student, 'id' | 'createdAt' | 'updateAt'> {}
 
 export interface CreateStudent extends Partial<StudentDto> {}
 
-export interface ClassifyStudent extends Omit<Student, 'id' | 'createdAt' | 'updateAt' | 'statusPredicted' | 'rules'> {}
+export interface ClassifyStudent
+  extends Omit<
+    Student,
+    | 'id'
+    | 'createdAt'
+    | 'updateAt'
+    | 'sex'
+    | 'province'
+    | 'canton'
+    | 'subject'
+    | 'academicPeriod'
+    | 'aab1Weighted'
+    | 'acdb1Weighted'
+    | 'apeb1Weighted'
+    | 'aab2Weighted'
+    | 'acdb2Weighted'
+    | 'apeb2Weighted'
+    | 'statusPredicted'
+    | 'rules'
+  > {
+  sex: number
+  province: number
+  canton: number
+  subject: number
+  academicPeriod: number
+}
 
 export class ClassifyStudentDto implements ClassifyStudent {
   @IsString()
