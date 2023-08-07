@@ -6,11 +6,18 @@ import provinceRouter from '@api/provinces/routes/province.router'
 import subjectRouter from '@api/subjects/routes/subject.router'
 import periodRouter from '@api/periods/routes/period.router'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 const app: Express = express()
 const router: Router = Router()
+console.log(config.whiteList)
 
 app.use(express.json())
+app.use(
+  cors({
+    origin: config.whiteList,
+  }),
+)
 app.use(bodyParser.json())
 app.use('/api/v1', router)
 router.use('/students', studentRouter)

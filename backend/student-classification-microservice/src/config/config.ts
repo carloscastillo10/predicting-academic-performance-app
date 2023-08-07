@@ -6,4 +6,5 @@ export const config = {
   port: process.env.PORT || 3000,
   predictModelUrl: process.env.PREDICT_MODEL_URL,
   dbUrl: process.env.DATABASE_URL || '',
+  whiteList: JSON.parse(process.env.WHITE_LIST || '[]'),
 }
