@@ -47,8 +47,8 @@ export class StudentService implements BaseStudentService {
       return student
 
       // await validateOrReject(classifyStudentData)
-    } catch (errors) {
-      console.log(errors)
+    } catch (error) {
+      console.log(error)
       // const error = new ValidationError()
       // const errorPayload = errors.map((error: any) => ({
       //   property: error.property,
@@ -57,6 +57,15 @@ export class StudentService implements BaseStudentService {
       // error.target
       // error.children = errorPayload
       // throw error
+    }
+  }
+
+  list = async () => {
+    try {
+      const students = await StudentModel.find({}).limit(5)
+      return students
+    } catch (error) {
+      console.log(error)
     }
   }
 }

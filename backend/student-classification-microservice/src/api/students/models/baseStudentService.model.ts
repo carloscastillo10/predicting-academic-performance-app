@@ -19,4 +19,6 @@ export interface BaseStudentService {
       }
     >
   >
+
+  list(): void
 }
