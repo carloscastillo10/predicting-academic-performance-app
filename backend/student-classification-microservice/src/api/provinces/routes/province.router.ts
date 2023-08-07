@@ -17,6 +17,21 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
+const listCantons = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params
+    const cantons = await service.listCantons(id)
+    res.json({
+      message: 'Success',
+      statusCode: 200,
+      data: cantons,
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
 router.get('/', list)
+router.get('/:id/cantons', listCantons)
 
 export default router
