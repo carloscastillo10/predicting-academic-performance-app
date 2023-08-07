@@ -29,6 +29,7 @@ class RandomForestService:
     def __open_files(self, filename):
         with open(f'{self.__utils_path}/{filename}') as file:
             data = json.load(file)
+
             return data
 
     def __set_registered_components(self):
@@ -80,6 +81,7 @@ class RandomForestService:
     def __load_explainer(self):
         with open(f'{self.__utils_path}/explainer', 'rb') as file:
             explainer = dill.load(file)
+
             return explainer
 
     def __set_explainer(self, model, independent_variables):
@@ -90,6 +92,7 @@ class RandomForestService:
             model.predict_proba,
             num_features=num_features
         )
+
         return explain
 
     @staticmethod
@@ -131,6 +134,7 @@ class RandomForestService:
             column.replace('_ponderado', 'Weighted')
             for column in auxiliary_variables.columns
         ]
+        
         return auxiliary_variables.to_dict('records')[0]
 
     def predict(self):
