@@ -4,9 +4,35 @@ import { BaseStudentService } from 'api/students/models/baseStudentService.model
 // import { plainToClass } from 'class-transformer'
 import { PredictStudentDto } from '@api/students/dtos/predictStudent.dto'
 import { config } from '@config/config'
+import { connectDB } from '@db/connection'
+import { Student, StudentModel } from '@api/students/models/student.model'
+import { ProvinceModel } from '@api/students/models/province.model'
+import { Document, FlattenMaps, Types } from 'mongoose'
+import { SexModel } from '@api/students/models/sex.model'
+import { SubjectModel } from '@api/students/models/subject.model'
+import { PeriodModel } from '@api/students/models/period.model'
 import axios from 'axios'
 
 export class StudentService implements BaseStudentService {
+  _db = connectDB()
+
+  async populate(student: Document<unknown, {}, Student> & Student & { _id: Types.ObjectId }): Promise<FlattenMaps<Student & { _id: Types.ObjectId }>> {
+    const studentObject = student.toJSON()
+    const sex = await SexModel.findOne({ id: studentObject.sex })
+    const province = await ProvinceModel.findOne({ id: studentObject.province })
+    const canton = await ProvinceModel.findOne({ id: studentObject.canton })
+    const subject = await SubjectModel.findOne({ id: studentObject.subject })
+    const period = await PeriodModel.findOne({ id: studentObject.academicPeriod })
+
+    studentObject.sex = sex ? sex : Object()
+    studentObject.province = province ? province : Object()
+    studentObject.canton = canton ? canton : Object()
+    studentObject.subject = subject ? subject : Object()
+    studentObject.academicPeriod = period ? period : Object()
+
+    return studentObject
+  }
+
   async create(studentData: ClassifyStudentDto) {
     try {
       // const classifyStudentData = plainToClass(ClassifyStudentDto, studentData)
@@ -14,9 +40,11 @@ export class StudentService implements BaseStudentService {
       const payload: PredictStudentDto = { age, sex, province, canton, numberFailures, aab1, acdb1, apeb1, aab2, acdb2, apeb2 }
       const response = await axios.post(`${config.predictModelUrl}/predict`, payload)
       const { data } = response.data
-      const createStudentData: CreateStudent = { ...studentData, ...data }
+      const createStudentData = new StudentModel({ ...studentData, ...data })
+      await createStudentData.save()
+      const student = this.populate(createStudentData)
 
-      return createStudentData
+      return student
 
       // await validateOrReject(classifyStudentData)
     } catch (errors) {
