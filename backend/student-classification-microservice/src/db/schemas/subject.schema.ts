@@ -1,4 +1,4 @@
-import { Subject } from '@api/students/models/subject.model'
+import { Subject } from '@api/subjects/models/subject.model'
 import { Schema } from 'mongoose'
 
 export const subjectSchema = new Schema<Subject>({
