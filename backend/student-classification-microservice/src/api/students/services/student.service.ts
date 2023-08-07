@@ -6,23 +6,24 @@ import { PredictStudentDto } from '@api/students/dtos/predictStudent.dto'
 import { config } from '@config/config'
 import { connectDB } from '@db/connection'
 import { Student, StudentModel } from '@api/students/models/student.model'
-import { ProvinceModel } from '@api/students/models/province.model'
+import { Province, ProvinceModel } from '@api/students/models/province.model'
 import { Document, FlattenMaps, Types } from 'mongoose'
-import { SexModel } from '@api/students/models/sex.model'
-import { SubjectModel } from '@api/students/models/subject.model'
-import { PeriodModel } from '@api/students/models/period.model'
+import { Sex, SexModel } from '@api/sexs/models/sex.model'
+import { Subject, SubjectModel } from '@api/students/models/subject.model'
+import { Period, PeriodModel } from '@api/students/models/period.model'
 import axios from 'axios'
+import { Canton } from '../models/canton.model'
 
 export class StudentService implements BaseStudentService {
   _db = connectDB()
 
   async populate(student: Document<unknown, {}, Student> & Student & { _id: Types.ObjectId }): Promise<FlattenMaps<Student & { _id: Types.ObjectId }>> {
     const studentObject = student.toJSON()
-    const sex = await SexModel.findOne({ id: studentObject.sex })
-    const province = await ProvinceModel.findOne({ id: studentObject.province })
-    const canton = await ProvinceModel.findOne({ id: studentObject.canton })
-    const subject = await SubjectModel.findOne({ id: studentObject.subject })
-    const period = await PeriodModel.findOne({ id: studentObject.academicPeriod })
+    const sex = await SexModel.findOne<Sex>({ id: studentObject.sex })
+    const province = await ProvinceModel.findOne<Province>({ id: studentObject.province })
+    const canton = await ProvinceModel.findOne<Canton>({ id: studentObject.canton })
+    const subject = await SubjectModel.findOne<Subject>({ id: studentObject.subject })
+    const period = await PeriodModel.findOne<Period>({ id: studentObject.academicPeriod })
 
     studentObject.sex = sex ? sex : Object()
     studentObject.province = province ? province : Object()
@@ -43,7 +44,7 @@ export class StudentService implements BaseStudentService {
       const createStudentData = new StudentModel({ ...studentData, ...data })
       await createStudentData.save()
       const student = this.populate(createStudentData)
-
+      // await StudentModel.deleteMany({ identification: '1101' })
       return student
 
       // await validateOrReject(classifyStudentData)
@@ -60,9 +61,9 @@ export class StudentService implements BaseStudentService {
     }
   }
 
-  list = async () => {
+  async list(): Promise<Student[] | undefined> {
     try {
-      const students = await StudentModel.find({}).limit(5)
+      const students = await StudentModel.find<Student>({}).limit(5)
       return students
     } catch (error) {
       console.log(error)
