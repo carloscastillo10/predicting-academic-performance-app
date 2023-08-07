@@ -25,7 +25,9 @@ const list = async (req: Request, res: Response, next: NextFunction) => {
       statusCode: 200,
       data: students,
     })
-  } catch (error) {}
+  } catch (error) {
+    next(error)
+  }
 }
 
 router.post('/', create)

@@ -20,5 +20,5 @@ export interface BaseStudentService {
     >
   >
 
-  list(): void
+  list(): Student[] | Promise<Student[] | undefined>
 }

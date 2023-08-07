@@ -3,7 +3,7 @@ import { BaseModel } from '@utils/base.model'
 import { model } from 'mongoose'
 import { Province } from '@api/students/models/province.model'
 import { Canton } from '@api/students/models/canton.model'
-import { Sex } from '@api/students/models/sex.model'
+import { Sex } from '@api/sexs/models/sex.model'
 import { Subject } from '@api/students/models/subject.model'
 import { Period } from '@api/students/models/period.model'
 
