@@ -16,6 +16,7 @@ import { ClassifiedStudentLayout } from './classifiedStudent'
 import { getEnrollmentInputs } from '@variables/forms/enrollment'
 import { getGradesInputs } from '@variables/forms/grades'
 import { classifyStudent } from '@services/api/classify'
+import { LoadingAlert } from '@common/LoadingAlert'
 
 const data = {
   title: {
@@ -28,7 +29,8 @@ export function ClassifyStudentLayout(): React.JSX.Element {
   const [enrollmentInputs, setEnrollmentInputs] = useState<InputProps>()
   const [gradesInputs, setGradesInputs] = useState<InputProps>()
   const [prediction, setPrediction] = useState()
-  const [loading, setLoading] = useState(true)
+  const [loadingForm, setLoadingForm] = useState(true)
+  const [loadingAlert, setLoadingAlert] = useState(false)
   const [active, setActive] = useState(0)
   const [openModal, setOpenModal] = useState(false)
   const form = useRef<FormikProps<FormikValues>>(null)
@@ -40,7 +42,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
 
     getGradesInputs().then((inputs) => {
       setGradesInputs(inputs)
-      setLoading(false)
+      setLoadingForm(false)
     })
   }, [])
 
@@ -58,9 +60,11 @@ export function ClassifyStudentLayout(): React.JSX.Element {
 
   const sendData = async () => {
     const data = form.current?.values || {}
+    setLoadingAlert(true)
+    setOpenModal(true)
     classifyStudent(data).then((response) => {
       setPrediction(response.data)
-      setOpenModal(true)
+      setLoadingAlert(false)
     })
   }
 
@@ -74,7 +78,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
 
   return (
     <>
-      {!loading && (
+      {!loadingForm && (
         <>
           <div className="flex justify-between items-center flex-wrap gap-4">
             <CardTitle title={data.title} />
@@ -110,7 +114,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
             </Container>
           </div>
           <Modal open={openModal} setOpen={setOpenModal}>
-            <ClassifiedStudentLayout setOpenModal={setOpenModal} prediction={prediction} />
+            {loadingAlert ? <LoadingAlert title={'Clasificando al estudiante'} /> : <ClassifiedStudentLayout setOpenModal={setOpenModal} prediction={prediction} />}
           </Modal>
         </>
       )}
