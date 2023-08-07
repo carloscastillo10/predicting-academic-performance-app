@@ -17,11 +17,15 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
-const list = (req: Request, res: Response, next: NextFunction) => {
-  res.json({
-    message: 'Classified',
-    statusCode: 201,
-  })
+const list = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const students = await service.list()
+    res.json({
+      message: 'Success',
+      statusCode: 200,
+      data: students,
+    })
+  } catch (error) {}
 }
 
 router.post('/', create)
