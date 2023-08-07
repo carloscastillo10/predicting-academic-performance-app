@@ -1,9 +1,8 @@
 import React from 'react'
-import { gradesInputs } from '@variables/forms/grades'
 import { Input } from '@components/classify/Form'
 import { Card } from '@components/Card'
 import { ArrowLongLeftIcon, PaperAirplaneIcon } from '@heroicons/react/20/solid'
-import { FormikValidationProps } from '@utils/classify'
+import { FormikValidationProps, InputProps } from '@utils/classify'
 
 const data = {
   title: {
@@ -20,6 +19,7 @@ interface Props extends FormikValidationProps {
   handlePreviousStep: () => void
   // eslint-disable-next-line no-unused-vars
   handleSubmit: (event: React.FormEvent<HTMLButtonElement>) => void
+  gradesInputs?: InputProps
 }
 
 export function GradesForm({ ...formProps }: Props): React.JSX.Element {
@@ -27,7 +27,7 @@ export function GradesForm({ ...formProps }: Props): React.JSX.Element {
     <>
       <Card title={data.title} subtitle={data.subtitle}>
         <div className="mt-6 grid grid-cols-6 gap-x-6 gap-y-8">
-          {gradesInputs?.data?.map((props, index) => <Input key={index} {...props} errors={formProps.errors} touched={formProps.touched} form={formProps.form} />)}
+          {formProps.gradesInputs?.data?.map((props, index) => <Input key={index} {...props} errors={formProps.errors} touched={formProps.touched} form={formProps.form} />)}
         </div>
         <div className="mt-10 flex items-center justify-between flex-wrap">
           <button

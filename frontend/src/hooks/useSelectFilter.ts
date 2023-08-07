@@ -7,7 +7,7 @@ export function useSelectFilter({ items }: SearchProps) {
 
   if (searchedItems.length > 0) {
     searchedItems = items.filter((item) => {
-      const itemValueLowerCase = item.value.toLowerCase()
+      const itemValueLowerCase = item.name.toLowerCase()
       const searchValueLowerCase = searchValue.toLowerCase()
       return itemValueLowerCase.includes(searchValueLowerCase)
     })

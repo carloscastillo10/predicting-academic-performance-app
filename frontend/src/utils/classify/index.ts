@@ -2,9 +2,31 @@ import React from 'react'
 import * as Yup from 'yup'
 import { getIn, FormikErrors, FormikTouched, FormikProps, FormikValues } from 'formik'
 
+export interface InputProps {
+  data: {
+    size?: string
+    label: string
+    type: string
+    required: boolean
+    id: string
+    name: string
+    placeholder?: string
+    inputText?: string
+    items?: {
+      id: number
+      name: string
+    }[]
+    defaultValue?: number
+    searchable?: boolean
+    min?: number
+    max?: number
+  }[]
+}
+
 export interface SearchProps {
   items: {
-    value: string
+    id: number
+    name: string
   }[]
 }
 
@@ -34,13 +56,14 @@ export const studentInitialValues = {
   name: '',
   lastname: '',
   age: '',
-  sex: '',
-  province: '',
-  canton: '',
+  sex: -1,
+  province: -1,
+  canton: -1,
   disability: false,
   disabilityPercentage: '',
   disabilitiesNumber: '',
-  subject: '',
+  subject: -1,
+  academicPeriod: -1,
   numberFailures: '',
   aab1: '',
   acdb1: '',
@@ -61,13 +84,10 @@ export const classifyStudentSchema = Yup.object().shape({
   name: Yup.string().required('Ingrese los nombres del estudiante'),
   lastname: Yup.string().required('Ingrese los apellidos del estudiante'),
   age: Yup.number().min(0, 'No puede ser menor que 0').max(100, 'No puede ser mayor que 100').required('Debe ingresar una edad'),
-  sex: Yup.string().required('Debe seleccionar un sexo'),
-  province: Yup.string().required('Debe seleccionar una provincia'),
-  canton: Yup.string().required('Debe seleccionar un cantón'),
   disabilityPercentage: Yup.number().min(0.1, 'No puede ser menor que 0.1%').max(100, 'No puede ser menor que 100%').required('Debe ingresar un porcentaje de discapacidad'),
   disabilitiesNumber: Yup.number().min(1, 'No puede ser menor que 1').max(100, 'No puede ser menor que 100').required('Debe ingresar el número de discapacidades'),
-  subject: Yup.string().required('Debe seleccionar una materia'),
-  academicPeriod: Yup.string().required('Debe seleccionar un periodo académico'),
+  subject: Yup.string().min(0, 'Debe seleccionar una materia').required('Debe seleccionar una materia').notOneOf(['-1'], 'Debe seleccionar una materia'),
+  academicPeriod: Yup.string().required('Debe seleccionar un periodo académico').notOneOf(['-1'], 'Debe seleccionar un periodo académico'),
   numberFailures: Yup.number().min(0, 'No puede ser menor que 0').required('Ingrese el número de reprobaciones'),
   aab1: Yup.number().min(0, 'No puede ser menor que 0').max(10, 'No puede ser mayor a 10'),
   acdb1: Yup.number().min(0, 'No puede ser menor que 0').max(10, 'No puede ser mayor a 10'),

@@ -12,7 +12,8 @@ interface Props extends FormikValidationProps {
   name: string
   placeholder?: string
   items?: {
-    value: string
+    id: number
+    name: string
   }[]
   defaultValue?: number
   searchable?: boolean
@@ -27,14 +28,14 @@ export function InputSelect({ ...props }: Props): React.JSX.Element {
 
   let valueSelected = ''
   if (props.items !== undefined && props.defaultValue !== undefined) {
-    valueSelected = props.items[props.defaultValue]?.value || field.value
+    valueSelected = props.items[props.defaultValue]?.name || field.value
   }
 
   const [selected, setSelected] = useState(valueSelected)
 
   const handleChange = (itemSelected: any) => {
-    setSelected(itemSelected.value)
-    setFieldValue(name, itemSelected.value)
+    setSelected(itemSelected.name)
+    setFieldValue(name, itemSelected.id)
   }
 
   return (
@@ -46,7 +47,7 @@ export function InputSelect({ ...props }: Props): React.JSX.Element {
         name={props.name}
         placeholder={props.placeholder ?? 'Seleccione una opción'}
         searchable={props.searchable ?? false}
-        itemSelected={selected}
+        itemSelected={selected || ''}
         handleChange={handleChange}
         errors={props.errors}
         touched={props.touched}

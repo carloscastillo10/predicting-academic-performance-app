@@ -23,6 +23,7 @@ export interface ApexChartProps {
 
 export interface SearchProps {
   items: {
-    value: string
+    id: number
+    name: string
   }[]
 }

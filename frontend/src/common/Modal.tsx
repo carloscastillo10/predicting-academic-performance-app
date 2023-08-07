@@ -32,7 +32,7 @@ export function Modal({ open, setOpen, children }: Props): React.JSX.Element {
               leaveFrom="opacity-100 translate-y-0 scale-100"
               leaveTo="opacity-0 translate-y-4 translate-y-0 scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all my-8 w-full max-w-lg">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all my-8 w-full max-w-xl max-h-screen">
                 <div className="bg-white px-4 py-4 pb-4 pt-5 lg:px-6 lg:py-6">
                   <XMarkIcon className="block absolute right-0 mr-4 h-6 w-6 text-gray-400 cursor-pointer text-end hover:text-gray-600" onClick={handleCloseModal} />
                   {children}

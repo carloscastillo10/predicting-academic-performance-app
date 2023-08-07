@@ -38,9 +38,14 @@ export function SelectForm({ ...props }: Props): React.JSX.Element {
               )}
               aria-expanded="true"
             >
-              <span className={classNames(props.itemSelected ? 'text-gray-700' : 'text-gray-400', 'ml-1 block truncate text-sm font-medium px-2.5')}>
-                {props.itemSelected ? props.itemSelected : props.placeholder}
-              </span>
+              {props.itemSelected.toString() !== '-1' ? (
+                <span className={classNames('text-gray-700', 'ml-1 block truncate text-sm font-medium px-2.5')}>{props.itemSelected}</span>
+              ) : (
+                <span className={classNames('text-gray-400', 'ml-1 block truncate text-sm font-medium px-2.5')}>{props.placeholder}</span>
+              )}
+              {/* <span className={classNames(props.itemSelected ? 'text-gray-700' : 'text-gray-400', 'ml-1 block truncate text-sm font-medium px-2.5')}>
+                {props.itemSelected !== '-1' ? props.itemSelected : props.placeholder}
+              </span> */}
               <ChevronDownIcon className="h-5 w-5 text-gray-600" aria-hidden="true" />
             </Listbox.Button>
             <Transition show={open} as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
@@ -50,22 +55,27 @@ export function SelectForm({ ...props }: Props): React.JSX.Element {
               >
                 {props.searchable ? <Search searchValue={searchValue} setSearchValue={setSearchValue} /> : null}
                 {!items.length && <span className="text-gray-600 block w-full ml-1 px-3 py-1 font-medium text-sm">No hay concidencias</span>}
-                {items?.map((item, index) => (
-                  <Listbox.Option
-                    key={index}
-                    className={({ selected, active }) =>
-                      classNames(selected || active ? 'bg-custom rounded-lg w-full text-white' : 'text-white', 'relative cursor-pointer flex justify-between items-center')
-                    }
-                    value={item}
-                  >
-                    {({ selected, active }) => (
-                      <>
-                        <span className={classNames(active || selected ? 'text-white font-bold' : 'text-gray-600', 'block w-full ml-1 px-3 py-1 font-medium text-sm')}>{item.value}</span>
-                        {selected ? <CheckIcon className="h-5 w-5 mr-3" aria-hidden="true" /> : null}
-                      </>
-                    )}
-                  </Listbox.Option>
-                ))}
+                {items?.map((item) => {
+                  if (item.id !== -1) {
+                    return (
+                      <Listbox.Option
+                        key={item.id}
+                        className={({ selected, active }) =>
+                          classNames(selected || active ? 'bg-custom rounded-lg w-full text-white' : 'text-white', 'relative cursor-pointer flex justify-between items-center')
+                        }
+                        value={item}
+                      >
+                        {({ selected, active }) => (
+                          <>
+                            <span className={classNames(active || selected ? 'text-white font-bold' : 'text-gray-600', 'block w-full ml-1 px-3 py-1 font-medium text-sm')}>{item.name}</span>
+                            {selected ? <CheckIcon className="h-5 w-5 mr-3" aria-hidden="true" /> : null}
+                          </>
+                        )}
+                      </Listbox.Option>
+                    )
+                  }
+                  return null
+                })}
               </Listbox.Options>
             </Transition>
           </div>

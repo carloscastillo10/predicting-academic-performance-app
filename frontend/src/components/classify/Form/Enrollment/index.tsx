@@ -1,10 +1,9 @@
 'use client'
 import React, { useState } from 'react'
-import { enrollmentInputs } from '@variables/forms/enrollment'
 import { Input } from '@components/classify/Form'
 import { Card } from '@components/Card'
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid'
-import { FormikValidationProps, resetDisabilityFields } from '@utils/classify'
+import { FormikValidationProps, InputProps, resetDisabilityFields } from '@utils/classify'
 import styles from '@styles/Checkbox.module.css'
 import { Field, FormikProps, FormikValues } from 'formik'
 
@@ -22,6 +21,7 @@ const data = {
 interface Props extends FormikValidationProps {
   handleNextStep: () => void
   form: React.RefObject<FormikProps<FormikValues>>
+  enrollmentInputs?: InputProps
 }
 
 export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
@@ -43,7 +43,7 @@ export function EnrollmentForm({ ...formProps }: Props): React.JSX.Element {
     <>
       <Card title={data.title} subtitle={data.subtitle}>
         <div className="mt-6 grid grid-cols-6 gap-x-6 gap-y-8">
-          {enrollmentInputs?.data?.map((props, index) => <Input key={index} {...props} errors={formProps.errors} touched={formProps.touched} />)}
+          {formProps.enrollmentInputs?.data?.map((props, index) => <Input key={index} {...props} errors={formProps.errors} touched={formProps.touched} />)}
 
           <div className={hasDisability ? 'col-span-6 md:col-span-2' : 'col-span-6 md:col-span-4'}>
             <fieldset>
