@@ -9,7 +9,7 @@ export const endPoints = {
   },
   provinces: {
     list: `${STUDENT_CLASSIFICATION_MICROSERVICE_URL}/api/v1/provinces`,
-    listCantons: (id: string) => `${STUDENT_CLASSIFICATION_MICROSERVICE_URL}/api/v1/provinces/${id}/cantons`,
+    listCantons: `${STUDENT_CLASSIFICATION_MICROSERVICE_URL}/api/v1/provinces/cantons`,
   },
   subjects: {
     list: `${STUDENT_CLASSIFICATION_MICROSERVICE_URL}/api/v1/subjects`,
