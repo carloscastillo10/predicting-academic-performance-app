@@ -30,7 +30,7 @@ export function SelectFilter({ ...props }: Props): React.JSX.Element {
               className={`${styles.dropdown_item_selected} flex justify-center items-center rounded-lg bg-white py-1.5 pr-3 text-left text-gray-600 shadow-sm ring-1 ring-gray-300 focus:outline-none focus:ring-2 focus:ring-custom sm:text-sm sm:leading-6`}
               aria-expanded="true"
             >
-              <span className="ml-1 block truncate text-sm text-gray-600 font-bold px-3">{selected.value}</span>
+              <span className="ml-1 block truncate text-sm text-gray-600 font-bold px-3">{selected.name}</span>
               <ChevronDownIcon className="h-5 w-5 text-gray-600" aria-hidden="true" />
             </Listbox.Button>
             <Transition show={open} as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
@@ -47,7 +47,7 @@ export function SelectFilter({ ...props }: Props): React.JSX.Element {
                   >
                     {({ selected, active }) => (
                       <>
-                        <span className={classNames(active || selected ? 'text-white font-bold' : 'text-gray-600', 'block w-full ml-1 px-3 py-1 font-medium text-sm')}>{item.value}</span>
+                        <span className={classNames(active || selected ? 'text-white font-bold' : 'text-gray-600', 'block w-full ml-1 px-3 py-1 font-medium text-sm')}>{item.name}</span>
                         {selected ? <CheckIcon className="h-5 w-5 mr-3" aria-hidden="true" /> : null}
                       </>
                     )}

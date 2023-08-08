@@ -56,15 +56,9 @@ export const studentInitialValues = {
   name: '',
   lastname: '',
   age: '',
-<<<<<<< HEAD:src/utils/classify/index.ts
   sex: -1,
   province: -1,
   canton: -1,
-=======
-  sex: '',
-  province: '',
-  canton: '',
->>>>>>> main:frontend/src/utils/classify/index.ts
   disability: false,
   disabilityPercentage: '',
   disabilitiesNumber: '',
@@ -90,12 +84,6 @@ export const classifyStudentSchema = Yup.object().shape({
   name: Yup.string().required('Ingrese los nombres del estudiante'),
   lastname: Yup.string().required('Ingrese los apellidos del estudiante'),
   age: Yup.number().min(0, 'No puede ser menor que 0').max(100, 'No puede ser mayor que 100').required('Debe ingresar una edad'),
-<<<<<<< HEAD:src/utils/classify/index.ts
-=======
-  sex: Yup.string().required('Debe seleccionar un sexo'),
-  province: Yup.string().required('Debe seleccionar una provincia'),
-  canton: Yup.string().required('Debe seleccionar un cantón'),
->>>>>>> main:frontend/src/utils/classify/index.ts
   disabilityPercentage: Yup.number().min(0.1, 'No puede ser menor que 0.1%').max(100, 'No puede ser menor que 100%').required('Debe ingresar un porcentaje de discapacidad'),
   disabilitiesNumber: Yup.number().min(1, 'No puede ser menor que 1').max(100, 'No puede ser menor que 100').required('Debe ingresar el número de discapacidades'),
   subject: Yup.string().min(0, 'Debe seleccionar una materia').required('Debe seleccionar una materia').notOneOf(['-1'], 'Debe seleccionar una materia'),
