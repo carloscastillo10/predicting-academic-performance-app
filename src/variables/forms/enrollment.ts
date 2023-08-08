@@ -3,7 +3,7 @@ import { listCantons, listProvinces, listSexs } from '@services/api/classify'
 export const getEnrollmentInputs = async () => {
   const sexs = await listSexs()
   const provinces = await listProvinces()
-  const cantons = await listCantons('11')
+  const cantons = await listCantons()
 
   const enrollmentInputs = {
     data: [

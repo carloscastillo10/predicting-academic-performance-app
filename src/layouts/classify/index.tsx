@@ -96,7 +96,7 @@ export function ClassifyStudentLayout(): React.JSX.Element {
                 <MultiStep active={active} handleNextStep={handleNextStep} handlePreviousStep={handlePreviousStep} />
                 <CardBody>
                   <div className="w-full lg:ml-16">
-                    <Formik initialValues={studentInitialValues} validationSchema={classifyStudentSchema} onSubmit={() => {}} innerRef={form}>
+                    <Formik initialValues={studentInitialValues} validationSchema={classifyStudentSchema} onSubmit={() => {}} innerRef={form} enableReinitialize={true}>
                       {({ errors, touched }) => (
                         <Form className="mb-2">
                           <div className={classNames(active === 0 ? 'flex' : 'hidden')}>

@@ -17,8 +17,8 @@ export const listProvinces = async () => {
   return data
 }
 
-export const listCantons = async (id: string) => {
-  const { data } = await axios.get(endPoints.provinces.listCantons(id))
+export const listCantons = async () => {
+  const { data } = await axios.get(endPoints.provinces.listCantons)
   return data
 }
 

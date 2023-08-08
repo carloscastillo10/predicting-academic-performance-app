@@ -43,14 +43,11 @@ export function SelectForm({ ...props }: Props): React.JSX.Element {
               ) : (
                 <span className={classNames('text-gray-400', 'ml-1 block truncate text-sm font-medium px-2.5')}>{props.placeholder}</span>
               )}
-              {/* <span className={classNames(props.itemSelected ? 'text-gray-700' : 'text-gray-400', 'ml-1 block truncate text-sm font-medium px-2.5')}>
-                {props.itemSelected !== '-1' ? props.itemSelected : props.placeholder}
-              </span> */}
               <ChevronDownIcon className="h-5 w-5 text-gray-600" aria-hidden="true" />
             </Listbox.Button>
             <Transition show={open} as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
               <Listbox.Options
-                className="scrollbar-show scrollbar-x-hidden absolute z-20 w-full overflow-auto mt-2 rounded-lg bg-white py-1 shadow-lg max-h-[25rem] focus:ring-1 focus:ring-container"
+                className="scrollbar-show scrollbar-x-hidden absolute z-20 w-full overflow-auto mt-2 rounded-lg bg-white py-1 shadow-2xl max-h-[calc(100vh_-_600px)] focus:ring-1 focus:ring-container"
                 id={props.id}
               >
                 {props.searchable ? <Search searchValue={searchValue} setSearchValue={setSearchValue} /> : null}
